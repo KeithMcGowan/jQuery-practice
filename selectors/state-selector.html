@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Selectors</title>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  </head>
+
+  <style>
+    div {
+        width: 100px;
+        aspect-ratio: 1;
+        background-color: pink;
+        margin: 5px;
+        padding: 5px;
+    }
+  </style>
+
+  <body>
+    <label for="name">Name: </label>
+    <input type="text" id="user name" />
+
+    <br />
+
+    <label for="userName">User Name: </label>
+    <input type="text" id="userName" disabled />
+
+    <br />
+
+    <label for="password">Password: </label>
+    <input type="password" id="password" />
+
+    <br />
+
+    <label for="gender">Gender: </label>
+    <input type="radio" name="sex" value="male" checked /> Male
+    <input type="radio" name="sex" value="female" /> Female
+
+    <br />
+
+    <label for="appliances">Home Appliances You Own: </label>
+    <br />
+    <select name="appliances" multiple="multiple">
+      <option selected>Refrigerator</option>
+      <option>Washing Machine</option>
+      <option>Microwave Oven</option>
+    </select>
+
+    <br />
+
+    <label for="flower">Which flower do you like?</label>
+    <input type="checkbox" name="flower" value="dahlia" /> Dahlia
+    <input type="checkbox" name="flower" value="tulips" checked /> Tulips
+
+    <br />
+
+    <div></div>
+    <div id="box"></div>
+    <div></div>
+
+    <input type="reset" value="Reset" />
+
+    <button id="btnClick">Submit</button>
+  </body>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+        function animating() {
+            $("#box").slideToggle(5000)
+        }
+
+      $("#btnClick").click(function () {
+        // :hidden selects all hidden elements
+        // $(":hidden").show(2000);
+
+        // :visible selects all visible elements
+        // $(":visible").hide(2000);
+
+        // :disabled selects all disabled elements
+        // $(":disabled").hide(2000);
+
+        // :enabled selects all enabled elements
+        // $(":enabled").hide(2000);
+
+        // :checked selects all checked elements
+        // $(":checked").hide(2000);
+
+        // :selected only selects elements within the "Select" tag
+        // $(":selected").hide(2000);
+
+        // :animate selects any elements being animated
+        animating();
+        $("div:animated").css("background-color", "purple");
+      });
+    });
+  </script>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Relationship-Based Selectors</title>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  </head>
+
+  <style>
+    .style {
+      border: 2px solid black;
+      width: 35%;
+      height: 100px;
+      padding: 10px;
+      margin: 10px;
+    }
+
+    p {
+      border: 1px solid red;
+      background-color: pink;
+      width: 80px;
+      aspect-ratio: 1;
+      float: left;
+      padding: 5px;
+      margin: 5px;
+    }
+
+    span {
+      border: 1px solid blue;
+      background-color: lightblue;
+      width: 50px;
+      aspect-ratio: 1;
+      float: left;
+      padding: 5px;
+      margin: 5px;
+    }
+
+    #first {
+      border: 1px solid grey;
+      background-color: silver;
+      width: 60px;
+      aspect-ratio: 1;
+      float: left;
+      padding: 5px;
+      margin: 5px;
+    }
+  </style>
+
+  <body>
+    <div id="main" class="style">
+      <p>Paragraph</p>
+      <span>Span</span>
+      <p>Paragraph</p>
+    </div>
+
+    <div id="sub" class="style">
+      <span>Span</span>
+      <div id="first">Div</div>
+      <p>Paragraph</p>
+      <div>
+        <span>Span</span>
+      </div>
+    </div>
+
+    <br />
+
+    <button id="btnClick">Click!!!</button>
+  </body>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("#btnClick").click(function () {
+        // :first-child selects the first child of it's parent element
+        // $("p:first-child").hide(2000);
+        // $("span:first-child").hide(2000);
+
+        // :last-child selects the last child of it's parent element
+        // $("p:last-child").hide(2000);
+        // $("span:last-child").hide(2000);
+
+        // :nth-child(number) selects the child of that specific index
+        // $("span:nth-child(2)").hide(2000);
+        // $("p:nth-child(3)").hide(2000);
+
+        // :nth-last-child(number) selects the child of that specific index, counting in reverse
+        // $("p:nth-last-child(3)").hide(2000);
+
+        // :first-of-type selects first instance of element selected
+        // $("p:first-of-type").hide(2000);
+
+        // :last-of-type selects last instance of element selected
+        // $("p:last-of-type").hide(2000);
+
+        // :nth-of-type(number) selects instance of that specifically indexed element
+        // $("p:nth-of-type(1)").hide(2000);
+
+        // :nth-last-of-type(number) selects instance of that specifically indexed element, counting in reverse
+        // $("p:nth-last-of-type(1)").hide(2000);
+
+        // :only-child selects element only if it is the only child of the parent element
+        // $("p:only-child").hide(2000);
+        // $("span:only-child").hide(2000);
+
+        // :only-of-type selects element only if it is the only element of that type in the parent element
+        // $("span:only-of-type").hide(2000);
+        $("p:only-of-type").hide(2000);
+      });
+    });
+  </script>
+</html>

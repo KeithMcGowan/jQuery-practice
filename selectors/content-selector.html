@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Selectors</title>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  </head>
+
+  <style>
+    .style {
+      border: 2px solid black;
+      width: 35%;
+      height: 100px;
+      padding: 10px;
+      margin: 10px;
+    }
+
+    p {
+      border: 1px solid red;
+      background-color: pink;
+      width: 80px;
+      aspect-ratio: 1;
+      float: left;
+      padding: 5px;
+      margin: 5px;
+    }
+
+    span {
+      border: 1px solid blue;
+      background-color: lightblue;
+      width: 40px;
+      aspect-ratio: 1;
+      float: left;
+      padding: 5px;
+      margin: 5px;
+    }
+
+    .first {
+      border: 1px solid grey;
+      background-color: silver;
+      width: 60px;
+      aspect-ratio: 1;
+      float: left;
+      padding: 5px;
+      margin: 5px;
+    }
+  </style>
+
+  <body>
+    <div id="main" class="style">
+      <p>First Paragraph</p>
+      <span>First Span</span>
+      <div class="first"></div>
+      <span>Second Span</span>
+    </div>
+
+    <div id="sub" class="style">
+      <p>First Paragraph</p>
+      <span>First Span</span>
+      <div class="first">First Div</div>
+      <p>
+        Second Paragraph
+        <span>Span inside</span>
+      </p>
+      <div>
+        <span>Span Inside</span>
+      </div>
+    </div>
+
+    <br />
+
+    <button id="btnClick">Click!!!</button>
+  </body>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("#btnClick").click(function () {
+        // :contains(text) selects all elements containing a specific string
+        // $("p:contains(First)").css("background-color", "red");
+        // $("p:contains(first)").css("background-color", "red");
+        // $("span:contains(First)").css("background-color", "red");
+
+        // :has(element) selects all elements that has specific element inside
+        // $("p:has(span)").css("background-color", "red");
+
+        // :empty selects all elements without child or text node
+        // $(":empty").css("background-color", "red");
+
+        // :parent selects all elements with at least 1 child or text node
+        // $(":parent").css("color", "red");
+
+        // :not(selector) selects all elements that do not have the specified selector
+        $(":not(:parent)").css("background-color", "red");
+      });
+    });
+  </script>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position Selector</title>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+</head>
+<body>
+    <p id="paragraph">First Paragraph. First Paragraph.</p>
+
+    <ol>
+        <li>John Smith</li>
+        <li>Aaron White</li>
+        <li>Sarah Brown</li>
+        <li>Aidan Jones</li>
+        <li>Maria Williams</li>
+    </ol>
+
+    <p id="second-paragraph">Second Paragraph. Second Paragraph.</p>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Department</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>John Smith</td>
+            <td>Accounts</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Aaron White</td>
+            <td>Sales</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Sarah Brown</td>
+            <td>Sales</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Aidan Jones</td>
+            <td>Accounts</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Maria Williams</td>
+            <td>Marketing</td>
+        </tr>
+    </table>
+
+    <p id="third-paragraph">Third Paragraph. Third Paragraph.</p>
+
+    <button id="btnClick">Click!!!</button>
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#btnClick").click(function() {
+            // :first selects first instance of...
+            // $("p:first").css("color", "red")
+            // $("li:first").css("color", "red")
+            // $("tr:first").css("color", "red")
+
+            // :last selects last instance of...
+            // $("tr:last").css("color", "red")
+            // $("tr:last, li:last, p:last").css("color", "red")
+
+            // Mixed :first & :last
+            // $("tr:first, li:last, p:last").css("color", "red")
+
+            // :even selects even indexed elements, beginning with 0
+            // $("li:even").css("color", "red")
+            // $("tr:even").css("color", "red")
+            // $("p:even").css("color", "red")
+
+            // :odd selects odd indexed elements, beginning with 0
+            // $("p:odd").css("color", "red")
+            // $("li:odd").css("color", "red")
+
+            // :eq(number) selects element of specified index, beginning with 0
+            // $("li:eq(3)").css("color", "red")
+            // $("tr:eq(3)").css("color", "red")
+
+            // :lt(number) selects all elements with index less than specified number
+            // $("tr:lt(3)").css("color", "red")
+            // $("li:lt(2)").css("color", "red")
+
+            // :gt(number) selects all elements with index greater than specified number
+            $("li:gt(2)").css("color", "red")
+        })
+    })
+</script>
+</html>

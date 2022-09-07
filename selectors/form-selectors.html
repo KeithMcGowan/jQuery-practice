@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Selectors</title>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  </head>
+  <body>
+    <label for="name">Name: </label>
+    <input type="text" id="user name" />
+
+    <br />
+
+    <label for="userName">User Name: </label>
+    <input type="text" id="userName" />
+
+    <br />
+
+    <label for="password">Password: </label>
+    <input type="password" id="password" />
+
+    <br />
+
+    <label for="gender">Gender: </label>
+    <input type="radio" name="sex" value="male" checked /> Male
+    <input type="radio" name="sex" value="female" /> Female
+
+    <br />
+
+    <label for="appliances">Home Appliances You Own: </label>
+    <br />
+    <select name="appliances" multiple="multiple">
+      <option selected>Refrigerator</option>
+      <option>Washing Machine</option>
+      <option>Microwave Oven</option>
+    </select>
+
+    <br />
+
+    <label for="flower">Which flower do you like?</label>
+    <input type="checkbox" name="flower" value="dahlia" /> Dahlia
+    <input type="checkbox" name="flower" value="tulips" checked /> Tulips
+    <br />
+    <input
+      type="image"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Dahlia_x_hybrida.jpg/1200px-Dahlia_x_hybrida.jpg"
+      width="250px"
+      height="250px"
+    />
+    <input
+      type="image"
+      src="https://m.media-amazon.com/images/I/61cDmd7EUBL._AC_SL1000_.jpg"
+      width="250px"
+      height="250px"
+    />
+
+    <br />
+
+    <input type="reset" value="Reset" />
+
+    <button id="btnClick">Submit</button>
+  </body>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("#btnClick").click(function () {
+        // :input selects all input elements on a page (input, select, radio)
+        // alert("There are " + $(":input").length + " inputs in this webpage.");
+
+        // :text selects all input elements of type "text" on a page
+        // alert("There are " + $(":text").length + " inputs of type 'text' in this webpage.");
+        // alert(`There ${$(":text").length !== 1 ? 'are ' + $(":text").length + ' inputs' : 'is ' + $(":text").length + ' input'} of type "text" in this webpage.`);
+
+        // :password selects all input elements of type "password" on a page
+        // alert("There are " + $(":password").length + " inputs of type 'password' in this webpage.");
+        // alert(`There ${$(":password").length !== 1 ? 'are ' + $(":password").length + ' inputs' : 'is ' + $(":password").length + ' input'} of type "password" in this webpage.`);
+
+        // :image selects all input elements of type "image" on a page
+        // alert(`There ${$(":image").length !== 1 ? 'are ' + $(":image").length + ' inputs' : 'is ' + $(":image").length + ' input'} of type "image" in this webpage.`);
+        
+        // :radio selects all input elements of type "radio" on a page
+        // alert(`There ${$(":radio").length !== 1 ? 'are ' + $(":radio").length + ' inputs' : 'is ' + $(":radio").length + ' input'} of type "radio" in this webpage.`);
+        
+        // :checkbox selects all input elements of type "checkbox" on a page
+        // alert(`There ${$(":checkbox").length !== 1 ? 'are ' + $(":checkbox").length + ' inputs' : 'is ' + $(":checkbox").length + ' input'} of type "checkbox" in this webpage.`);
+        
+        // :file selects all input elements of type "file" on a page
+        // alert(`There ${$(":file").length !== 1 ? 'are ' + $(":file").length + ' inputs' : 'is ' + $(":file").length + ' input'} of type "file" in this webpage.`);
+        
+        // :button selects all input elements of type "button" on a page
+        // alert(`There ${$(":button").length !== 1 ? 'are ' + $(":button").length + ' inputs' : 'is ' + $(":button").length + ' input'} of type "button" in this webpage.`);
+        
+        // :reset selects all input elements of type "reset" on a page
+        alert(`There ${$(":reset").length !== 1 ? 'are ' + $(":reset").length + ' inputs' : 'is ' + $(":reset").length + ' input'} of type "reset" in this webpage.`);
+      });
+    });
+  </script>
+</html>

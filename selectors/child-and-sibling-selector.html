@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Child and Sibling Selectors</title>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  </head>
+
+  <style>
+    .style {
+      border: 2px solid black;
+      width: 35%;
+      height: 100px;
+      padding: 10px;
+      margin: 10px;
+    }
+
+    p {
+      border: 1px solid red;
+      background-color: pink;
+      width: 80px;
+      aspect-ratio: 1;
+      float: left;
+      padding: 5px;
+      margin: 5px;
+    }
+
+    span {
+      border: 1px solid blue;
+      background-color: lightblue;
+      width: 40px;
+      aspect-ratio: 1;
+      float: left;
+      padding: 5px;
+      margin: 5px;
+    }
+
+    .first {
+      border: 1px solid grey;
+      background-color: silver;
+      width: 60px;
+      aspect-ratio: 1;
+      float: left;
+      padding: 5px;
+      margin: 5px;
+    }
+  </style>
+
+  <body>
+    <div id="main" class="style">
+      <p>Paragraph</p>
+      <span>Span</span>
+      <div class="first">Div</div>
+      <span>Span</span>
+    </div>
+
+    <div id="sub" class="style">
+      <p>Paragraph</p>
+      <span>Span</span>
+      <div class="first">Div</div>
+      <p>
+        Paragraph
+        <span>Span inside</span>
+      </p>
+      <div>
+        <span>Span</span>
+      </div>
+    </div>
+
+    <br />
+
+    <button id="btnClick">Click!!!</button>
+  </body>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("#btnClick").click(function () {
+        // > selects direct child of parent element
+        // $("div > span").hide(2000)
+        // $("div > p").hide(2000)
+
+        // Space selects all elemements that are decendents of the parent element
+        // $("div span").hide(2000)
+
+        // + selects specified adjacent sibling
+        // $("p + span").hide(2000)
+
+        // ~ selects all elements that are siblings of specified element
+        $("p ~ span").hide(2000);
+      });
+    });
+  </script>
+</html>

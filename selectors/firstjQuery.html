@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>First jQuery</title>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  </head>
+  <body>
+    <ol class="subject">
+      <li id="sub1">English</li>
+      <li id="sub2">Mathematics</li>
+      <li id="sub3">Physics</li>
+      <li id="sub4">Chemistry</li>
+      <li id="sub5">History</li>
+      <li id="sub6">Geography</li>
+    </ol>
+    <ul id="department">
+      <li>Sales</li>
+      <li>HR</li>
+      <li>Marketing</li>
+      <li>Accounts</li>
+    </ul>
+    <p id="firstParagraph">
+      First Paragraph. First Paragraph. First Paragraph. First Paragraph. First
+      Paragraph.
+    </p>
+    <p id="secondParagraph">
+      Second Paragraph. Second Paragraph. Second Paragraph. Second Paragraph.
+      Second Paragraph.
+    </p>
+    <button id="btnFirst">First Button</button>
+    <button id="btnSecond">Second Button</button>
+  </body>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      //   $("#btnFirst").click(function () {
+      //     // * selects everything in the HTML
+      //     // $("*").css("background-color", "yellow");
+
+      //     // Tagname selects by element tag
+      //     // $("p").css("background-color", "yellow");
+      //     // $("ol").css("background-color", "yellow");
+      //     // $("li").css("background-color", "yellow");
+      //     // $("button").css("background-color", "yellow");
+
+      //     // Multiple selectors
+      //     // $("button, p").css("background-color", "yellow");
+      //     // $("ol, p").css("background-color", "yellow");
+
+      //     // ID selectors
+      //     // $("#sub1").css("color", "blue");
+      //     // $("#sub1, #sub3, #firstParagraph").css("color", "blue");
+
+      //     // Class selectors
+      //     // $(".subject").css("color", "blue");
+
+      //     // "This" selector
+      //     $(this).css("background-color", "blue");
+      //   });
+
+      $("p").hover(function () {
+        $(this).css("color", "blue");
+      });
+    });
+  </script>
+</html>
