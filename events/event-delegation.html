@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events</title>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  </head>
+
+  <style>
+    li:hover {
+      cursor: pointer;
+    }
+  </style>
+
+  <body>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+    </ul>
+
+    <button id="btnAdd">Add</button>
+  </body>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("#btnAdd").click(function () {
+        let nextNum = +$("li:last").text() + 1;
+        // alert(nextNum);
+        $("ul").append(`<li>${nextNum}</li>`);
+      });
+
+      // Click method does not add to dynamically added elements
+      // $("li").click(function () {
+      //   alert(`You clicked ${$(this).text()}.`);
+      // });
+
+      //   On method can be used to attach event handler to dynamically added elements
+      //   You must add event to parent element and add a parameter describing which specific element the event will effect
+      $("ul").on("click", "li", function () {
+        alert(`You clicked ${$(this).text()}.`);
+      });
+    });
+  </script>
+</html>

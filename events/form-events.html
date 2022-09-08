@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events</title>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  </head>
+
+  <style>
+    div {
+      color: blue;
+      font-size: 20px;
+    }
+  </style>
+
+  <body>
+    <form action="">
+      <fieldset style="width: 200px">
+        <legend><b>Personal</b></legend>
+        <input type="text" id="firstName" placeholder="First Name" />
+        <br />
+        <input type="text" id="lastName" placeholder="Last Name" />
+        <br />
+        <input type="submit" id="btnSubmit" value="Submit" />
+      </fieldset>
+    </form>
+
+    <form action="">
+      <fieldset style="width: 400px">
+        <legend><b>Personal</b></legend>
+        Salutation:
+        <select name="" id="salutation">
+          <option value="Mr">Mr.</option>
+          <option value="Miss">Miss.</option>
+          <option value="Ms">Ms.</option>
+          <option value="Mrs">Mrs.</option>
+        </select>
+        <br />
+        First Name: <input type="text" name="FirstName" />
+        <br />
+        Last Name: <input type="text" name="LastName" />
+        <br />
+        <input type="submit" id="btnSubmit" value="Submit" />
+        <br />
+        <div id="result"></div>
+      </fieldset>
+    </form>
+  </body>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      // Focus event
+      // $(":text").focus(function() {
+      //     $(this).css("background-color", "grey")
+      // })
+
+      // Blur event - when element loses it's focus
+      // $(":text").blur(function() {
+      //     $(this).css("background-color", "white")
+      // })
+
+      // Focus in event - gets triggered when any parent/child element gets focus
+      //   $("fieldset").focusin(function () {
+      //     $(this).css("background-color", "grey");
+      //   });
+
+      // Focus out event - gets triggered when any parent/child element loses focus
+      //   $("fieldset").focusout(function () {
+      //     $(this).css("background-color", "white");
+      //   });
+
+      // Change event
+      // $("select").change(function() {
+      //     // $("#result").text($(this).val()).show().fadeOut(3000);
+      //     alert($(this).val());
+      // })
+    //   $(":text").change(function () {
+    //     $("#result").text($(this).val()).show().fadeOut(3000);
+    //   });
+
+    //   Select event - triggered when value in texbox/textarea is selected
+    //   $(":text").select(function () {
+    //     $("#result").text($(this).val()).show().fadeOut(3000);
+    //   });
+    // });
+
+    //   Submit event
+      $("form").submit(function () {
+        // alert($("#salutation").val() + ". " + $("[name=FirstName]").val() + " " + $("[name=LastName]").val());
+        alert(`${$("#salutation").val()}. ${$("[name=FirstName]").val()} ${$("[name=LastName]").val()}`);
+      });
+    });
+  </script>
+</html>

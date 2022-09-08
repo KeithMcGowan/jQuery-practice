@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events</title>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  </head>
+
+  <style>
+    #box {
+      width: 200px;
+      aspect-ratio: 1;
+      border: 2px solid black;
+      background-color: purple;
+    }
+
+    #box:hover {
+      cursor: pointer;
+    }
+  </style>
+
+  <body>
+    <div id="box"></div>
+  </body>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      // Click event - combines the mouse down and mouse up events
+      // $("#box").click(function() {
+      //     $(this).css("background-color", "pink");
+      // })
+
+      // Double-click event
+      // $("#box").dblclick(function() {
+      //     $(this).css("background-color", "pink");
+      // })
+
+      // Mouse enter event
+      // $("#box").mouseenter(function() {
+      //     $(this).css("background-color", "pink");
+      // })
+
+      // Mouse leave event
+      // $("#box").mouseleave(function() {
+      //     $(this).css("background-color", "purple");
+      // })
+
+      // Mouse hover event - combines the mouse enter and mouse leave events
+      // $("#box").hover(function() {
+      //     $(this).css("background-color", "pink");
+      // }, function() {
+      //     $(this).css("background-color", "purple");
+      // })
+
+      // Mouse down event
+      $("#box").mousedown(function () {
+        $(this).css("background-color", "pink");
+      });
+
+      // Mouse up event
+      $("#box").mouseup(function () {
+        $(this).css("background-color", "green");
+      });
+    });
+  </script>
+</html>

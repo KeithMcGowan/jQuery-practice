@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events</title>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  </head>
+  <body>
+    <div></div>
+    <p>
+        My Paragraph. My Paragraph.
+        My Paragraph. My Paragraph.
+        My Paragraph. My Paragraph.
+        My Paragraph. My Paragraph.
+        My Paragraph. My Paragraph.
+        My Paragraph. My Paragraph.
+        My Paragraph. My Paragraph.
+        My Paragraph. My Paragraph.
+        My Paragraph. My Paragraph.
+        My Paragraph. My Paragraph.
+        My Paragraph. My Paragraph.
+        My Paragraph. My Paragraph.
+        My Paragraph. My Paragraph.
+        My Paragraph. My Paragraph.
+        My Paragraph. My Paragraph.
+        My Paragraph. My Paragraph.
+        My Paragraph. My Paragraph.
+        My Paragraph. My Paragraph.
+        My Paragraph. My Paragraph.
+        My Paragraph. My Paragraph.
+        My Paragraph. My Paragraph.
+        My Paragraph. My Paragraph.
+        My Paragraph. My Paragraph.
+        My Paragraph. My Paragraph.
+        My Paragraph. My Paragraph.
+        My Paragraph. My Paragraph.
+        My Paragraph. My Paragraph.
+    </p>
+  </body>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      // Resize event
+      //   $(window).resize(function () {
+      //     $("div").text(
+      //     //   "Width: " + $(window).width() + " Height: " + $(window).height()
+      //       `Width: ${$(window).width()}px Height: ${$(window).height()}px`
+      //     );
+      //   });
+
+      // Scroll event
+      let i = 1;
+
+      $(window).scroll(function () {
+        $("div").text(`Scroll: ${i}`);
+        i++;
+      });
+    });
+  </script>
+</html>

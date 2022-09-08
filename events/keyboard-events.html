@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events</title>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  </head>
+
+  <style>
+    #textName {
+      font-size: 30px;
+    }
+  </style>
+
+  <body>
+    <input type="text" id="textName" />
+  </body>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      // Key down event
+      // Key press event works similarly to key down event, but works differently in different browsers
+      $("#textName").keydown(function () {
+        $(this).css("color", "red");
+      });
+
+      // Key up event
+      $("#textName").keyup(function () {
+        $(this).css("color", "blue");
+      });
+    });
+  </script>
+</html>

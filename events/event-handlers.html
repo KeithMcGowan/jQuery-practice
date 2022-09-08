@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events</title>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  </head>
+  <body>
+    <div></div>
+    <p>First Paragraph</p>
+    <p>Second Paragraph</p>
+    <button id="btnClick">Click</button>
+  </body>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      // On event
+      // $("p").on("click", function() {
+      //     $(this).css("font-size", "20px");
+      // })
+
+      // Off event - unattaches event handler
+      // $("button").click(function() {
+      //     $("p").off("click");
+      // })
+
+      // Multiple events
+      // $("p").on({
+      //     click: function() {
+      //         $(this).css("font-size", "20px");
+      //     },
+      //     dblclick: function() {
+      //         $(this).css("color", "red");
+      //     }
+      // })
+
+      // One events - removes event after event is triggered once
+      //   let i = 1;
+
+      //   $("#btnClick").one("click", function () {
+      //     $("div").text(i);
+      //     i++;
+      //   });
+
+      //   Trigger events - manually trigger events to fire
+      $("p").on("click", function () {
+        $(this).css("background-color", "pink");
+      });
+
+      $("p:first").click(function () {
+        $("p:last").trigger("click");
+      });
+    });
+  </script>
+</html>

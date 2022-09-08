@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>The World of Flowers</title>
+</head>
+<body>
+ <div id="page">
+		<div id="top">
+        	<a href="#"><img src="contactus.png" alt="Contact Us" title="Contact Us"/></a>
+        	<a href="#"><img src="rssfeed.png" alt="RSS Feed" title="RSS Feed"/></a>
+        </div>
+        <div id="header">
+        	<h1 id="mainHeading">Flowers</h1>
+            <h2>World of flowers. World of flowers. World of flowers. World of flowers. World of flowers. World of flowers. World of flowers. World of flowers. World of flowers. World of flowers. World of flowers. World of flowers. World of flowers.</h2>
+		</div>
+        
+ <div id="content">
+   	<div class="content_top">
+       	<h1>Rose in Different Colors</h1>
+    </div>
+    <div class="content_instance">
+       	<img src="image1.jpeg" />
+        <div class="content_right">
+       	<h2>Red Rose</h2>
+        <p>This is a red rose. This is a red rose.  This is a red rose.  This is a red rose.  This is a red rose.  This is a red rose.  This is a red rose.  This is a red rose.  This is a red rose. </p><br />
+        <p>This is a beautiful rose. This is a beautiful rose. This is a beautiful rose. This is a beautiful rose. This is a beautiful rose. This is a beautiful rose.</p>
+    </div>
+ </div>
+       <div class="content_instance">
+          	<img src="image2.jpeg" />
+            <div class="content_right">
+			   <h2>Yellow Rose</h2>
+			   <p>This is a yellow rose. This is a yellow rose. This is a yellow rose. This is a yellow rose. This is a yellow rose. This is a yellow rose. This is a yellow rose. This is a yellow rose. This is a yellow rose. This is a yellow rose. This is a yellow rose. This is a yellow rose. This is a yellow rose. This is a yellow rose. </p>
+			</div>
+	   </div>
+	   <div class="content_instance">
+       	<img src="image3.jpeg" />
+        <div class="content_right">
+			   <h2>White Rose</h2>
+               <p>This is a white rose. This is a white rose. This is a white rose. This is a white rose. This is a white rose. This is a white rose. This is a white rose. This is a white rose. This is a white rose. This is a white rose. This is a white rose. This is a white rose. </p>
+               <br /><p>The beauty and purity of white. The beauty and purity of white. The beauty and purity of white. The beauty and purity of white. The beauty and purity of white. The beauty and purity of white. </p>
+        </div>
+       </div>
+       <div class="content_instance">
+            <img src="image4.jpeg" />
+            <div class="content_right">
+                <h2>Pink Rose</h2>
+                <p>This is a pink rose. This is a pink rose. This is a pink rose. This is a pink rose. This is a pink rose. This is a pink rose. This is a pink rose. This is a pink rose. This is a pink rose. This is a pink rose. This is a pink rose. This is a pink rose. </p>
+            </div>
+       </div>
+  </div>
+<div id="footer">Copyright 2015</div>
+</div>
+ <script>
+   $(document).ready(function(){
+	
+	//write your code here
+	});
+ </script>
+</body>
+</html>
