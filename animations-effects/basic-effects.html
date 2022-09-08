@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Effects</title>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  </head>
+
+  <style>
+    div {
+      width: 100px;
+      aspect-ratio: 1;
+      border: 2px solid black;
+      background-color: pink;
+    }
+  </style>
+
+  <body>
+    <p>FIRST PARAGRAPH FIRST PARAGRAPH</p>
+    <div hidden></div>
+    <button id="btnClick">Click</button>
+  </body>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("button").click(function () {
+        // Callback function happens after animation is complete
+        // $("div").hide(5000, function() {
+        //     alert("The effect is complete.");
+        // });
+
+        // Easing can be either linear or swing
+        // $("div").hide(5000, "swing", function() {
+        //     alert("The effect is complete.");
+        // });
+
+        // .hide()
+        // $("div").hide();
+        // $("div").hide("slow");
+        // $("div").hide("fast");
+        // $("div").hide(5000);
+        // $("div").hide(10000);
+        // $("div").hide(5000, "linear");
+        // $("div").hide(5000, "swing");
+        // $("p").hide(5000);
+
+        // .show()
+        // $("div").show(5000);
+        // $("div, p").show(5000);
+
+        // .toggle() - Toggles between .hide() and .show()
+        // $("div, p").toggle(2000, "swing");
+      });
+    });
+  </script>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fading and Sliding Effects</title>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+</head>
+
+<style>
+    div {
+        width: 150px;
+        aspect-ratio: 1;
+        border: 2px solid black;
+        margin: 10px;
+        padding: 10px;
+    }
+</style>
+
+<body>
+    <div style="background-color: purple"></div>
+    <div hidden style="background-color: green"></div>
+
+    <br>
+
+    <button id="btnClick">Click</button>
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("button").click(function() {
+            // .fadeIn()
+            // $("div").fadeIn(5000);
+            // $("div").fadeIn(10000);
+
+            // .fadeOut()
+            // $("div").fadeOut(10000);
+
+            // .fadeToggle() - toggles .fadeIn() and .fadeOut()
+            // $("div").fadeToggle(5000);
+
+            // .fadeTo() - sets opacity of selected element
+            // Does not hide element
+            // $("div:visible").fadeTo(5000, ".5");
+            // $("div:visible").fadeTo(5000, ".2");
+
+            // .slideDown() - displays hidden element
+            // $("div").slideDown(5000);
+
+            // .slideUp() - hides visible element
+            // $("div").slideUp(5000);
+
+            // .slideToggle() - toggles .slideDown() and .slideUp()
+            $("div").slideToggle(5000);
+        })
+    })
+</script>
+</html>

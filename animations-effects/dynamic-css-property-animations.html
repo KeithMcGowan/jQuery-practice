@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>.animate(): Dynamic Property Name</title>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  </head>
+
+  <style>
+    #parent {
+      width: 500px;
+      aspect-ratio: 1;
+      border: 5px solid black;
+      margin: 20px auto;
+      position: relative;
+    }
+
+    .box {
+      width: 150px;
+      aspect-ratio: 1;
+      text-align: center;
+      font-size: 25px;
+      line-height: 150px;
+      position: absolute;
+      cursor: pointer;
+    }
+
+    #box1 {
+      background-color: pink;
+      top: 100px;
+      left: 100px;
+    }
+
+    #box2 {
+      background-color: cyan;
+      top: 100px;
+      right: 100px;
+    }
+
+    #box3 {
+      background-color: grey;
+      bottom: 100px;
+      left: 100px;
+    }
+
+    #box4 {
+      background-color: red;
+      bottom: 100px;
+      right: 100px;
+    }
+  </style>
+
+  <body>
+    <div id="parent">
+      <div id="box1" class="box" data-block="top" data-inline="left">Click</div>
+      <div id="box2" class="box" data-block="top" data-inline="right">
+        Click
+      </div>
+      <div id="box3" class="box" data-block="bottom" data-inline="left">
+        Click
+      </div>
+      <div id="box4" class="box" data-block="bottom" data-inline="right">
+        Click
+      </div>
+    </div>
+  </body>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      //   $("#box1").click(function () {
+      //     $(this).animate({
+      //       top: 0,
+      //       left: 0,
+      //     });
+      //   });
+      //   $("#box2").click(function () {
+      //     $(this).animate({
+      //       top: 0,
+      //       right: 0,
+      //     });
+      //   });
+      //   $("#box3").click(function () {
+      //     $(this).animate({
+      //       bottom: 0,
+      //       left: 0,
+      //     });
+      //   });
+      //   $("#box4").click(function () {
+      //     $(this).animate({
+      //       bottom: 0,
+      //       right: 0,
+      //     });
+      //   });
+
+      $(".box").click(function () {
+        let blockPosition = $(this).data("block");
+        let inlinePosition = $(this).data("inline");
+
+        // $(this).animate({
+        //   [blockPosition]: 0,
+        //   [inlinePosition]: 0,
+        // });
+
+        let animationProp = {};
+        animationProp[blockPosition] = 0;
+        animationProp[inlinePosition] = 0;
+
+        $(this).animate(animationProp);
+      });
+    });
+  </script>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Animations</title>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  </head>
+
+  <style>
+    div {
+      width: 150px;
+      aspect-ratio: 1;
+      border: 2px solid black;
+      margin: 10px;
+      padding: 10px;
+    }
+  </style>
+
+  <body>
+    <p>Paragraph Paragraph Paragraph Paragraph</p>
+    <div style="background-color: purple"></div>
+    <div style="background-color: green"></div>
+
+    <br />
+
+    <button id="btnStart">Start</button>
+    <button id="btnStop">Stop</button>
+  </body>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("#btnStart").click(function () {
+        // .animate() - offers custom animations
+        // $("div").animate({"height": "+=50px"}, 5000);
+        // $("div").animate({"height": "+=50px", "width": "+=60px"}, 5000);
+        // $("div").animate({"height": "-=25px", "width": "+=25px"}, 10000);
+        // $("div").animate({"height": "25px", "width": "50px"}, 10000);
+        // $("p").animate({"word-spacing": "50px", "letter-spacing": "25px"}, 10000);
+
+        // .delay()
+        $("div:first").animate({ height: "25px", width: "50px" }, 8000);
+        $("div:last").delay(2000).animate({ height: "25px", width: "50px" }, 8000);
+      });
+
+      // .stop() stops any animation on an element
+      $("#btnStop").click(function () {
+        $("div").stop();
+      });
+    });
+  </script>
+</html>
