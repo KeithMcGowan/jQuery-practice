@@ -1,4 +1,4 @@
-# jQuery-practice
+# jQuery Practice
 Playground for jQuery practice and projects.
 
 This practice code is from a Udemy course called [jQuery in Action: Build 20 jQuery Projects](https://www.udemy.com/course/jquery-web-development-made-easy/)
