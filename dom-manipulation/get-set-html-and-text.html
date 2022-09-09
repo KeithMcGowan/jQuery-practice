@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <title>DOM Manipulation</title>
+  </head>
+  <body>
+    <h3>Personal Details</h3>
+    <label for="firstName"><b>First Name: </b></label>
+    <input type="text" id="firstName" />
+
+    <br />
+
+    <label for="lastName"><b>Last Name: </b></label>
+    <input type="text" id="lastName" />
+
+    <br />
+
+    <p>My Paragraph!!!</p>
+    <div id="result">The Result!!!</div>
+    <input type="button" id="btnClick" value="Click" />
+
+    <br />
+  </body>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("#btnClick").click(function () {
+        // .html() get/set value of HTML elements
+        // If you select multiple elements with the same identifier, it will always return the first instance
+        // alert($("p").html());
+        // alert($("label:first").html());
+        // alert($("label:eq(1)").html());
+        // alert($("label").html());
+
+        // Set HTML value
+        // Will set value for all matching elements
+        // $("label").html("<b>Changed Name: </b>");
+        // $("label").html("Changed Name: ");
+        // $("label:eq(0)").html($("label:eq(1)").html());
+
+        // .text() get/set value of text elements
+        // Returns only text, will not return any HTML tags
+        // console.log($("p").text());
+        // console.log($("label:first").text());
+
+        // Set text value
+        // $("p").text("My new paragraph!!!");
+        // <b> tag will not work because .text() method only returns text values
+        $("p").text("<b>My new paragraph!!!</b>");
+      });
+    });
+  </script>
+</html>

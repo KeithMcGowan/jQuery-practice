@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <title>DOM Manipulation</title>
+  </head>
+  <body>
+    <h3>Personal Details</h3>
+    <label for="firstName"><b>First Name: </b></label>
+    <input type="text" id="firstName" value="John" />
+
+    <br />
+
+    <label for="lastName"><b>Last Name: </b></label>
+    <input type="text" id="lastName" />
+
+    <br />
+
+    <label for="flower"><b>Your Favorite Flower: </b></label>
+
+    <br />
+
+    <!-- You must hold the "ctrl" button on Windows to select multiple options in browser. -->
+    <select id="flower" multiple>
+      <option>Rose</option>
+      <option>Tulips</option>
+      <option>Jasmine</option>
+    </select>
+
+    <br />
+
+    <input type="button" value="Click" id="btnClick" />
+
+    <br />
+  </body>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("#btnClick").click(function () {
+        // .val() only works on elements that have "value" attribute
+        // console.log($("input:eq(0)").val())
+        // console.log($("select").val())
+        // console.log($("label:first").val())
+
+        // Set .val()
+        // $("input:first").val("John")
+        // $("input:eq(1)").val(`${$("input:first").val()} Smith`)
+        // $("select").val("Rose")
+        // $("select").val(["Rose", "Jasmine"])
+
+        // Get .attr()
+        // console.log("The attribute value is: ", $("input:first").attr("value"));
+        // console.log("The attribute value is: ", $("input:first").attr("id"));
+
+        // Set .att()
+        $("option:first").attr("id", "rose");
+        console.log("The ID of the first options is", $("option:first").attr("id"));
+
+        // Get .prop()
+        // console.log("The property value is: ", $("input:first").prop("value"));
+        // console.log("The property value is: ", $("input:first").prop("id"));
+      });
+    });
+  </script>
+</html>

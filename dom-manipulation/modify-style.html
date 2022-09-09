@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <title>DOM Manipulation</title>
+  </head>
+
+  <style>
+    .color {
+      color: red;
+    }
+
+    .size {
+      font-size: 30px;
+      background-color: green;
+    }
+  </style>
+
+  <body>
+    <h1 style="font-size: 50px">Main Heading</h1>
+    <p>This is the main content</p>
+    <h2>Sub Heading</h2>
+    <p>This is a new paragraph</p>
+    <button id="btnAdd">Add</button>
+    <button id="btnRemove">Remove</button>
+  </body>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      // .css()
+      // $("h1, h2").css("color", "green");
+      //   $("h1, h2").css({
+      //     color: "green",
+      //     backgroundColor: "pink",
+      //   });
+      //   $("#btnAdd").click(function() {
+      //     alert($("h1").css("font-size"));
+      //   })
+
+      // .addClass()
+      $("#btnAdd").click(function () {
+        // $("h1, p:last").addClass("color")
+        // $("h1, p:last").addClass("color size")
+        // $("h1, p:last").addClass("color")
+        $("p:first").addClass("size");
+      });
+
+      // .removeClass()
+      // $("#btnRemove").click(function() {
+      //     $("p:first").removeClass("size")
+      // })
+
+      // .toggleClass() - Toggles between .addClass() and .removeClass()
+      $("#btnRemove").click(function () {
+        $("p").toggleClass("size");
+      });
+    });
+  </script>
+</html>

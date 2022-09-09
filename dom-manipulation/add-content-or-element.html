@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <title>DOM Manipulation</title>
+  </head>
+
+  <style>
+    .parent {
+      width: 150px;
+      height: 100px;
+      border: 2px solid black;
+    }
+  </style>
+
+  <body>
+    <p>John Smith</p>
+    <div class="parent">
+      <div>First Item</div>
+      <div>Second Item</div>
+      <div>Third Item</div>
+    </div>
+
+    <br />
+
+    <button id="btnClick">Click</button>
+  </body>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("#btnClick").click(function () {
+        // .append() - Adds content as a child element at the end of the selected element
+        // $("p").append(" Good Morning!!!");
+        // $(".parent").append("<div>Fourth Item</div>");
+
+        // .after() - Adds content as a sibling element at the end of the selected element
+        // $("p").after(" Good Morning!!!");
+        // $(".parent").after("<div>Fourth Item</div>");
+
+        // .prepend() - Adds content as a child element at the beginning of the selected element
+        // $("p").prepend(" Good Morning!!!");
+        // $(".parent").prepend("<div>Fourth Item</div>");
+
+        // .before() - Adds content as a sibling element at the beginning of the selected element
+        $("p").before(" Good Morning!!!");
+        $(".parent").before("<div>Fourth Item</div>");
+      });
+    });
+  </script>
+</html>
