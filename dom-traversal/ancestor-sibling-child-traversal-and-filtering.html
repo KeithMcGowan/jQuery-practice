@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <title>DOM Traversal Methods</title>
+</head>
+
+<style>
+    .cell {
+        height: 50px;
+        width: 100px;
+        text-align: center;
+        border: 2px dotted grey;
+    }
+
+    .row {
+        outline: green solid medium;
+    }
+
+    table {
+        border: 3px solid blue;
+    }
+
+    * {
+        margin: 10px;
+        padding: 10px;
+    }
+</style>
+
+<body>
+    <table id="myTable">
+        <tr id="row1" class="row">
+            <td id="r1c1" class="cell">Row1 Cell1</td>
+            <td id="r1c2" class="cell">Row1 Cell2</td>
+            <td id="r1c3" class="cell">Row1 Cell3</td>
+            <td id="r1c4" class="cell">Row1 Cell4</td>
+        </tr>
+        <tr id="row2" class="row">
+            <td id="r2c1" class="cell">Row2 Cell1</td>
+            <td id="r2c2" class="cell">Row2 Cell2</td>
+            <td id="r2c3" class="cell">Row2 Cell3</td>
+            <td id="r2c4" class="cell">Row2 Cell4</td>
+        </tr>
+        <tr id="row3" class="row">
+            <td id="r3c1" class="cell">Row3 Cell1</td>
+            <td id="r3c2" class="cell">Row3 Cell2</td>
+            <td id="r3c3" class="cell">Row3 Cell3</td>
+            <td id="r3c4" class="cell">Row3 Cell4</td>
+        </tr>
+        <tr id="row4" class="row">
+            <td id="r4c1" class="cell">Row4 Cell1</td>
+            <td id="r4c2" class="cell">Row4 Cell2</td>
+            <td id="r4c3" class="cell">Row4 Cell3</td>
+            <td id="r4c4" class="cell">Row4 Cell4</td>
+        </tr>
+    </table>
+
+    <br>
+
+    <button id="btnClick">Click!!!</button>
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#btnClick").click(function() {
+            // .parent() - Selects direct parent of specified element
+            // $("#r1c2").parent().css("outline", "red solid thick");
+            // $("#row1").parent().css("outline", "red solid thick");
+            // $("table").parent().css("outline", "red solid thick");
+
+            // .parents() - Selects all parents of specified element
+            // $("#r1c2").parents().css("outline", "red solid thick");
+            // $("body").parents().css("outline", "red solid thick");
+
+            // .parentsUntil(element) - Selects all parents until an element is given to stop 
+            // $("#r1c2").parentsUntil("body").css("outline", "red solid thick");
+
+            // .siblings() - Selects all siblings of specified element
+            // $("#r1c2").siblings().css("outline", "red solid thick");
+            // $("#row3").siblings().css("outline", "red solid thick");
+
+            // .prev() - Selects the immediately previous sibling
+            // $("#row3").prev().css("outline", "red solid thick");
+            // $("#r2c4").prev().css("outline", "red solid thick");
+
+            // .prevAll() - Selects all previous siblings of specified element
+            // $("#r2c4").prevAll().css("outline", "red solid thick");
+
+            // .prevUntil(element) - Selects all previous siblings up until specified element
+            // $("#r2c4").prevUntil("#r2c1").css("outline", "red solid thick");
+
+            // .next() - Selects the immediately next sibling
+            // $("#r2c2").next().css("outline", "red solid thick");
+
+            // .nextAll() - Selects all next siblings of specified element
+            // $("#r2c2").nextAll().css("outline", "red solid thick");
+
+            // .nextUntil(element) - Selects all next siblings up until specified element
+            // $("#r2c2").nextUntil("#r2c4").css("outline", "red solid thick");
+
+            // .children() - Selects immediate child elements
+            // $("body").children().css("outline", "red solid thick");
+            // $("#row1").children().css("outline", "red solid thick");
+
+            // .find(element) - Selects all child elements at any level of specified element
+            // $("body").find("tr").css("outline", "red solid thick");
+            // $("body").find("td").css("outline", "red solid thick");
+
+            // .first() - Filters the selection to only display the first instance
+            // $("#row1 td").first().css("outline", "red solid thick");
+
+            // .last() - Filters the selection to only display the last instance
+            // $("#row1 td").last().css("outline", "red solid thick");
+
+            // .eq(index) - Filters the selection to only display the specified index, starting with 0
+            // $("#row1 td").eq(1).css("outline", "red solid thick");
+
+            // .filter(selector) - Filters the selection by the selector
+            // $("#row1 td").filter(":even").css("outline", "red solid thick");
+
+            // .not(selector) - Filters the selection to display elements not specified by the selector
+            // $("#row1 td").not(":even").css("outline", "red solid thick");
+
+            // .slice(start, end) - Filters the selection to only display between what indexes are specified
+            // $("#row1 td").slice(1).css("outline", "red solid thick");
+            // $("#row1 td").slice(1, 3).css("outline", "red solid thick");
+            // $("td").slice(5, 10).css("outline", "red solid thick");
+            // $("td").slice(11).css("outline", "red solid thick");
+
+            // .has(selector) - Filters all the elements to display only ones that include the specified selector
+            $("tr").has("td").css("outline", "red solid thick");
+        })
+    })
+</script>
+</html>
