@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <title>jQuery Utility Functions</title>
+</head>
+<body>
+    <div id="result"></div>
+
+    <div id="test"></div>
+
+    <ul>
+        <li>Jasmine</li>
+        <li>Rose</li>
+        <li>Lotus</li>
+        <li>Tulips</li>
+    </ul>
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        // $.inArray(seachedString, array, startingIndex) - Search if string is in array
+        let myNames = ["Aaron", "Sarah", "Rose", "Abel", "Diya", "John"];
+
+        // $("#result").html(`The index of Abel is ${$.inArray("Abel", myNames)}.`);
+        // $("#result").html(`The index of George is ${$.inArray("George", myNames)}.`);
+        // $("#result").html(`The index of Aaron is ${$.inArray("Aaron", myNames)}.`);
+        // $("#result").html(`The index of Aaron is ${$.inArray("Aaron", myNames, 3)}.`);
+
+        // $.grep(array, fn, booleanInverter) - Filters array
+        let weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        // let newArr = $.grep(weekdays, function(item, index) {
+        //     return (item.charAt(0) == "T");
+        // })
+        // let newArr = $.grep(weekdays, function(item, index) {
+        //     return (item.charAt(0) == "T");
+        // }, true)
+        // let newArr = $.grep(weekdays, function(item, index) {
+        //     return (index > 0 && index < 6);
+        // })
+        // let newArr = $.grep(weekdays, function(item, index) {
+        //     return (index > 0 && index < 6);
+        // }, true)
+
+        // $("#result").html(`Current Array: ${weekdays} <br>New Array: ${newArr}`);
+
+        // $.map(array, fn) - Map over all items in an array and translate to new array
+        // let myArr = [1, 2, 3, 4, 5, 6];
+        let myArr = ["abel", "sara", "aaron", "rose", "john"];
+
+        // let newArr = $.map(myArr, function(item, index) {
+        //     return (Math.pow(item, 2));
+        // })
+        // let newArr = $.map(myArr, function(item, index) {
+        //     // return (Math.pow(item, 2) + index);
+        //     return(`${index + 1}: ${item.toUpperCase()}`)
+        // })
+
+        // $("#result").html(`Current Array: <br> ${myArr.join("<br>")} <br>New Array: <br> ${newArr.join("<br>")}`)
+
+        // $.each(array/object, fn)
+        let nameArr = ["Aaron", "Ann", "Aidan", "Sarah", "Abel"];
+        let numberObj = {
+            a: 1,
+            b: 10,
+            c: 100,
+            d: 1000
+        }
+        let sum = 0;
+
+        // $.each(nameArr, function(index, value) {
+        //     // alert(`${index}: ${value}`);
+        //     $("#result").append(`${index}: ${value} <br>`);
+        // })
+
+        // $.each(numberObj, function(index, value) {
+        //     // alert(index);
+        //     // sum += value;
+        //     // $("#result").html(sum);
+            
+        //     $("#result").append(`${index}: ${value} <br>`);
+        // })
+
+        // $("li").each(function(index, value) {
+        //     // $("#result").append(`${index}: ${value} <br>`);
+        //     $("#result").append(`${index}: ${$(this).text()} <br>`);
+        // })
+
+        $("div").each(function(index, value) {
+            $("#result").append(`${index}: ${$(this).attr("id")} <br>`);
+        })
+    })
+</script>
+</html>
