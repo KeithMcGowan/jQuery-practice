@@ -24,3 +24,7 @@ NOTE: The `/ajax` folder is purely code.  It does not connect to an acutal serve
 - News Ticker
 
 <img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/news-ticker.gif" alt="News ticker project" width=350 />
+
+- Photo Zoom Effect
+
+<img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/photo-zoom.gif" alt="News ticker project" width=350 />
