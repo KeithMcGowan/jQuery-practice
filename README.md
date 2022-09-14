@@ -15,4 +15,4 @@ NOTE: The `/ajax` folder is purely code.  It does not connect to an acutal serve
 
 - Accordion
 
-![Accordion](https://github.com/KeithMcGowan/jQuery-practice/tree/master/gifs/accordion.gif)
+![Accordion](https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/accordion.gif)
