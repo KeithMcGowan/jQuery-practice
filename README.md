@@ -15,4 +15,4 @@ NOTE: The `/ajax` folder is purely code.  It does not connect to an acutal serve
 
 - Accordion
 
-[](https://imgur.com/JrBWUXP)
+![](https://imgur.com/JrBWUXP)
