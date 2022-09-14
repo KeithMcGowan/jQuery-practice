@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <title>Document</title>
+  </head>
+
+  <style>
+    #box {
+      width: 400px;
+      height: 250px;
+      margin: 50px auto;
+      border: 3px solid black;
+      text-align: center;
+    }
+
+    #result {
+      color: purple;
+      font-size: 25px;
+      text-align: justify;
+      padding: 2px;
+    }
+  </style>
+
+  <body>
+    <div id="box">
+      <h2>BMI Calculator</h2>
+      <table>
+        <tr>
+          <td>Height:</td>
+          <td><input type="text" id="height" /></td>
+          <td>(height in cetimeters)</td>
+        </tr>
+        <tr>
+          <td>Weight:</td>
+          <td><input type="text" id="weight" /></td>
+          <td>(weight in kilograms)</td>
+        </tr>
+      </table>
+
+      <br />
+
+      <center>
+        <button id="btnCalculate">Calculate BMI</button>
+      </center>
+
+      <div id="result"></div>
+    </div>
+  </body>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("#btnCalculate").click(function () {
+        let $height = $("#height").val();
+        let $weight = $("#weight").val();
+
+        if ($height % 1 >= 0 && $weight % 1 >= 0) {
+          // Shorthand methods
+          // $.get(url, data, callback, dataType) - Url is required, all else are optional
+          //   $.get(
+          //     "http://localhost/jquery/calculate-bmi.php",
+          //     {
+          //       ht: $height,
+          //       wt: $weight,
+          //     },
+          //     function (data, status, jqXHR) {
+          //       $("#result").html(
+          //         `Your BMI is ${data.bmi.toFixed(2)}. ${data.message}`
+          //       );
+          //     },
+          //     "json"
+          //   );
+
+          //   $.post(url, data, callback, dataType) - Url is required, all else are optional
+          $.post(
+            "http://localhost/jquery/calculate-bmi.php",
+            {
+              ht: $height,
+              wt: $weight,
+            },
+            function (data, status, jqXHR) {
+              $("#result").html(
+                `Your BMI is ${data.bmi.toFixed(2)}. ${data.message}`
+              );
+            },
+            "json"
+          );
+
+          //   $.getJSON(url, data, callback) - Does not require "dataType" parameter, since it is getting a JSON object
+          $.getJSON(
+            "http://localhost/jquery/calculate-bmi.php",
+            {
+              ht: $height,
+              wt: $weight,
+            },
+            function (data, status, jqXHR) {
+              $("#result").html(
+                `Your BMI is ${data.bmi.toFixed(2)}. ${data.message}`
+              );
+            }
+          );
+
+        //   $.load() - Loads data from server into specified matching element
+        $.load(
+            // "http://localhost/jQuery/some-file-name.txt"
+            "http://localhost/jQuery/some-other-file-name.txt p"
+        )
+        }
+      });
+    });
+  </script>
+</html>

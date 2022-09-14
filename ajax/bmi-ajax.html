@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <title>Document</title>
+  </head>
+
+  <style>
+    #box {
+      width: 400px;
+      height: 250px;
+      margin: 50px auto;
+      border: 3px solid black;
+      text-align: center;
+    }
+
+    #result {
+      color: purple;
+      font-size: 25px;
+      text-align: justify;
+      padding: 2px;
+    }
+  </style>
+
+  <body>
+    <div id="box">
+      <h2>BMI Calculator</h2>
+      <table>
+        <tr>
+          <td>Height:</td>
+          <td><input type="text" id="height" /></td>
+          <td>(height in cetimeters)</td>
+        </tr>
+        <tr>
+          <td>Weight:</td>
+          <td><input type="text" id="weight" /></td>
+          <td>(weight in kilograms)</td>
+        </tr>
+      </table>
+
+      <br />
+
+      <center>
+        <button id="btnCalculate">Calculate BMI</button>
+      </center>
+
+      <div id="result"></div>
+    </div>
+  </body>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("#btnCalculate").click(function () {
+        let $height = $("#height").val();
+        let $weight = $("#weight").val();
+
+        if ($height % 1 >= 0 && $weight % 1 >= 0) {
+          let jsObject = {
+            ht: $height,
+            wt: $weight,
+          };
+
+          $.ajax({
+            url: "http://localhost/jquery/calculate-bmi.php",
+            // If sending a JavaScript Object
+            // data: {
+            //     ht: $height,
+            //     wt: $weight
+            // },
+            // If sending string, must include "processData: false"
+            // data: "number=4856852652224511",
+            // If sending JSON data, must niclude "processData: false"
+            data: JSON.stringify(jsObject),
+            processData: false,
+            method: "POST",
+            contentType: "application/x-www-form-urlencoded",
+            dataType: "json",
+            // success: function(data, status, jqXHR) {
+            //     // alert(data);
+            //     alert(jqXHR.responseText);
+            //     $("#result").html(`Your BMI is ${(data.bmi).toFixed(2)}. ${data.message}`);
+
+            // },
+            // error: function(jqXHR, status, error) {
+            //     alert("ERROR: ", error);
+            //     // alert(status);
+            //     // alert(jqXHR.readyState);
+            // },
+            // complete: function(jqXHR, status) {
+            //     alert("The request is completed.")
+            // }
+          })
+            // .done() construct works the same as "success: " above.
+            .done(function (data, status, jqXHR) {
+              $("#result").html(
+                `Your BMI is ${data.bmi.toFixed(2)}. ${data.message}`
+              );
+            })
+            // .fail() construct works the same as "error: " above.
+            .fail(function (jqXHR, status, error) {
+              alert("ERROR: ", error);
+            })
+            // .always() construct works the same as "complete: " above.
+            .always(function (jqXHR, status) {
+              alert("The request is completed.");
+            });
+        }
+      });
+    });
+  </script>
+</html>
