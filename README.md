@@ -16,5 +16,3 @@ NOTE: The `/ajax` folder is purely code.  It does not connect to an acutal serve
 - Accordion
 
 <img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/accordion.gif" alt="Accordion project" width=350 />
-
-<img src="https://imgur.com/a/r0qezXB" alt="Accordion project" width=350 />
