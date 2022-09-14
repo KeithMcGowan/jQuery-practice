@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./jquery.myplugin.js"></script>
+    <title>New Plugin</title>
+  </head>
+  <body>
+    <h2 id="mainHead" class="same">Main Heading</h2>
+    <p id="first">This is a paragraph.</p>
+    <h3 id="subHead">Sub Heading</h3>
+    <p id="last" class="same">This is another paragraph!!</p>
+    <button id="btnClick">Click</button>
+  </body>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+    //   $("body *").click(function() {
+    //     // alert(`The ID is "${$(this).getID()}".`);
+    //     $(this).getElement();
+    //   });
+
+      $("#btnClick").click(function() {
+        // $("#mainHead").colorText({ color: "red" });
+        // $("#subHead").colorText({ background: "pink" });
+        // $("p").colorText({ color: "blue", background: "black" });
+        // $(this).colorText({ color: "blue", background: "black" });
+
+        // Chaining - Must add "return" to plugin
+        // $("#mainHead").colorText({ color: "red" }).fadeOut(2000);
+        // $("#mainHead").getID().colorText({ color: "red" });
+        // $("#mainHead").getElement().colorText({ color: "red" });
+
+        // Targeting multiple elements
+        // $("h2").getID();
+        // $(".same").getID();
+        // $(".same").getElement().colorText({ color: "red" });
+
+        // Configurable parameters
+        // $("h2").colorText();
+        // $("h3").colorText({ color: "blue", background: "pink" });
+        // $("p").colorText({ color: "green" });
+        // $(this).colorText({ background: "black" });
+
+        // Minimize methods in plugin
+        // $("h2").getDetail("id");
+        $(".same").getDetail("element").colorText({ color: "red" });
+      })
+    });
+  </script>
+</html>
