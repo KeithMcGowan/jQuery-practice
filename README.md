@@ -10,3 +10,9 @@ When creating a new HTML page, make sure to import jQuery in the Head of the doc
 `<script src="../node_modules/jquery/dist/jquery.min.js"></script>`
 
 NOTE: The `/ajax` folder is purely code.  It does not connect to an acutal server, so you will not receive any working data.
+
+# Projects
+
+- Accordion
+
+[](https://imgur.com/JrBWUXP)

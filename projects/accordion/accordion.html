@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <title>Accordion</title>
+</head>
+
+<style>
+    #accordion {
+        width: 400px;
+        margin-inline: auto;
+        border-bottom: 1px solid #940773;
+    }
+
+    #accordion h4 {
+        background-color: #E6BCDC;
+        border: 1px solid #940773;
+        border-bottom: none;
+        margin: 0;
+        padding: 5px;
+        cursor: pointer;
+    }
+
+    #accordion h4:hover {
+        background-color: #DB5CBD;
+    }
+
+    #accordion p {
+        background-color: #F0E1EC;
+        border: 1px solid #940773;
+        border-bottom: none;
+        border-top: none;
+        margin: 0;
+        padding: 15px;
+    }
+</style>
+
+<body>
+    <div id="accordion">
+        <h4>First Section</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis voluptates architecto aliquam odit nemo, illum fuga facere expedita laboriosam enim cum necessitatibus dolore minima accusantium beatae velit tenetur fugiat esse aliquid. Quasi culpa aut doloribus ea voluptatibus voluptates, excepturi blanditiis. Accusamus itaque officiis quia, ducimus quisquam aperiam quae ipsa quos.</p>
+        <h4>Second Section</h4>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil quo cum vel non porro ab vero quia impedit eveniet earum.</p>
+        <h4>Third Section</h4>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo dolorem asperiores at consequatur? Aperiam maxime eveniet animi unde architecto, totam laudantium repellat quae harum ratione earum? At iure dolorem neque.</p>
+        <h4>Fourth Section</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis a laudantium consequatur tempore assumenda quo totam consequuntur laborum voluptate eum libero tenetur molestiae, rem sit!</p>
+        <h4>Fifth Section</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam a quae explicabo, delectus sed laudantium quaerat corrupti soluta porro nam distinctio, nemo dicta et rerum numquam hic quas iure. Vel!</p>
+    </div>
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#accordion p:not(:first)").hide();
+        $("#accordion h4").click(function() {
+            $(this).next().slideToggle(250)
+                .siblings("p:visible").slideUp(250);
+        })
+    })
+</script>
+</html>
