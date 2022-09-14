@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <title>News Ticker</title>
+  </head>
+
+  <style>
+    .ticker {
+      background-color: #e3e5e6;
+      width: 350px;
+      height: 400px;
+      border: 3px solid #4c4c4d;
+      overflow: hidden;
+      border-radius: 15px;
+      margin: 0 auto;
+      padding: 10px;
+    }
+
+    #news {
+      margin: 1px;
+      padding: 1px;
+    }
+
+    li {
+      text-align: justify;
+      list-style-type: none;
+      border-bottom: 2px solid #4c4c4d;
+      padding: 10px 0 20px;
+    }
+
+    li b {
+      color: #118ff0;
+    }
+  </style>
+
+  <body>
+    <div class="ticker">
+      <ul id="news">
+        <li>
+          Lorem <b>ipsum</b> dolor sit amet consectetur adipisicing elit.
+          Laborum expedita unde <b>enim</b> fugit laudantium assumenda corporis
+          mollitia <b>natus</b> quis explicabo!
+        </li>
+        <li>
+          Lorem, ipsum dolor sit amet <b>consectetur</b> adipisicing elit.
+          Dolorem quidem et labore autem. <b>Suscipit</b>, tempore!
+        </li>
+        <li>
+          <b>Lorem</b> ipsum dolor, sit amet consectetur adipisicing
+          <b>elit</b>. Quia, consectetur.
+        </li>
+        <li>
+          Lorem, ipsum dolor <b>sit</b> amet consectetur adipisicing elit.
+          Similique earum quidem facilis <b>magni</b> enim et maxime, quis
+          consequatur laboriosam deleniti ex <b>voluptas</b> ipsam atque id?
+        </li>
+        <li>
+          Lorem ipsum <b>dolor</b> sit amet consectetur adipisicing elit.
+          <b>Ratione</b> iste laudantium porro repudiandae, eius fugiat minima
+          expedita <b>dolore</b> numquam suscipit!
+        </li>
+        <li>
+          Lorem <b>ipsum</b> dolor sit amet consectetur adipisicing elit.
+          Laborum expedita unde <b>enim</b> fugit laudantium assumenda corporis
+          mollitia <b>natus</b> quis explicabo!
+        </li>
+        <li>
+          Lorem, ipsum dolor sit amet <b>consectetur</b> adipisicing elit.
+          Dolorem quidem et labore autem. <b>Suscipit</b>, tempore!
+        </li>
+        <li>
+          <b>Lorem</b> ipsum dolor, sit amet consectetur adipisicing
+          <b>elit</b>. Quia, consectetur.
+        </li>
+      </ul>
+    </div>
+  </body>
+
+  <script type="text/javascript">
+    let interval;
+
+    function startTicker() {
+      $("#news li:first").slideUp(750, function () {
+        $(this).appendTo($("#news")).slideDown(750);
+      });
+    }
+
+    function stopTicker() {
+      clearInterval(interval);
+    }
+
+    $(document).ready(function () {
+      interval = setInterval(startTicker, 3000);
+
+      $("#news").hover(
+        function () {
+          stopTicker();
+        },
+        function () {
+          interval = setInterval(startTicker, 3000);
+        }
+      );
+    });
+  </script>
+</html>

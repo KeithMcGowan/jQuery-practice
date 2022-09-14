@@ -20,3 +20,7 @@ NOTE: The `/ajax` folder is purely code.  It does not connect to an acutal serve
 - Slide Panel
 
 <img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/slide-panel.gif" alt="Slide panel project" width=350 />
+
+- News Ticker
+
+<img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/news-ticker.gif" alt="News ticker project" width=350 />
