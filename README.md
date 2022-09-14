@@ -15,4 +15,4 @@ NOTE: The `/ajax` folder is purely code.  It does not connect to an acutal serve
 
 - Accordion
 
-![Accordion](https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/accordion.gif =350x250)
+<img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/accordion.gif" alt="Accordion project" width=350 />
