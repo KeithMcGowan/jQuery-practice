@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <title>Slide Panel</title>
+</head>
+
+<style>
+    body {
+        width: 500px;
+        margin: 0 auto;
+    }
+
+    #content {
+        background-color: #99adcc;
+        color: #FFFFFF;
+        height: 200px;
+        padding: 10px;
+        display: none;
+    }
+
+    #panel {
+        margin: 0;
+        border-top: 2px solid #12284a;
+    }
+
+    .message {
+        background-color: #578cde;
+        width: 120px;
+        height: 30px;
+        display: block;
+        padding: 5px;
+        margin: 0 auto;
+        color: #FFFFFF;
+        text-align: center;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        cursor: pointer;
+    }
+
+    .icon {
+        display: none;
+    }
+</style>
+
+<body>
+    <div id="content">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis, nobis beatae? Laborum, non inventore quis repudiandae eaque iure, hic culpa animi nam, nemo quos voluptate itaque sint aliquid expedita? Itaque nulla perferendis quibusdam unde quis, debitis dicta iusto accusantium tempora adipisci! Non eaque sint laboriosam quos? Consectetur modi esse mollitia?
+    </div>
+    <div id="panel">
+        <p class="message">
+            Slide Panel
+            <span class="open">&#8681;</span>
+            <span class="close icon">&#8679;</span>
+        </p>
+    </div>
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#panel").click(function() {
+            $("#content").slideToggle("slow");
+            $(".open, .close").toggleClass("icon")
+        })
+    })
+</script>
+</html>

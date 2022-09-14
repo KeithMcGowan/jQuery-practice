@@ -16,3 +16,7 @@ NOTE: The `/ajax` folder is purely code.  It does not connect to an acutal serve
 - Accordion
 
 <img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/accordion.gif" alt="Accordion project" width=350 />
+
+- Slide Panel
+
+<img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/slide-panel.gif" alt="Slide panel project" width=350 />
