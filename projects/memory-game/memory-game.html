@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <title>Memory Game</title>
+  </head>
+
+  <style>
+    body {
+      background-color: grey;
+    }
+
+    #container {
+      margin: 20px auto;
+      width: 650px;
+      font: 20px Verdana;
+    }
+
+    #info {
+      text-align: center;
+      margin: 20px;
+    }
+
+    .text {
+      color: white;
+    }
+
+    .button {
+      text-decoration: none;
+      background-color: black;
+      color: white;
+      margin: 10px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #images div {
+      float: left;
+      width: 100px;
+      aspect-ratio: 1;
+      margin: 5px;
+      padding: 5px 5px 0;
+      border: 5px solid black;
+      border-radius: 10px;
+      cursor: pointer;
+      background-color: white;
+    }
+
+    #images div img {
+      object-fit: cover;
+      width: 100%;
+      height: 96%;
+      display: none;
+    }
+  </style>
+
+  <body>
+    <div id="container">
+      <div id="info">
+        <span class="text">Moves: </span>
+        <span id="moves" class="text">0</span>
+        <a class="button" href="#" role="button" onclick="resetGame()">Reset</a>
+      </div>
+      <div id="images"></div>
+    </div>
+  </body>
+
+  <script type="text/javascript">
+    const imageArr = [
+      "../../images/Dragon_Ball_Super.jpeg",
+      "../../images/Dragon_Ball_Training.jpg",
+      "../../images/Dragon_Balls.jpg",
+      "../../images/Frieza_Cell_Buu.png",
+      "../../images/Gogeta.jpg",
+      "../../images/Goku_vs_Cell.jpg",
+      "../../images/Goku5.jpg",
+      "../../images/Goku6.jpg",
+      "../../images/Krillin_and_Family.jpg",
+      "../../images/Yamcha_Dead.jpg",
+    ];
+    let imgSource = "";
+    let divID = "";
+    let imgFound = 0;
+    let moves = 0;
+
+    function shuffleImages() {
+      let totalLength = imageArr.length * 2;
+      let newImageArr = new Array();
+      let currentDiv = $("#images div:first-child");
+
+      newImageArr = $.merge($.merge([], imageArr), imageArr);
+
+      for (let i = 0; i < totalLength; i++) {
+        let randomNum = Math.round(Math.random() * (newImageArr.length - 1));
+
+        $(`#${currentDiv.attr("id")} img`).attr("src", newImageArr[randomNum]);
+        newImageArr.splice(randomNum, 1);
+        currentDiv = currentDiv.next();
+      }
+    }
+
+    function openCard() {
+      let ID = $(this).attr("id");
+
+      if ($(`#${ID} img`).is(":hidden")) {
+        $(`#${ID} img`).show("slow");
+
+        if (imgSource == "") {
+          divID = ID;
+          imgSource = $(`#${ID} img`).attr("src");
+        } else {
+          currentDiv = $(`#${ID} img`).attr("src");
+
+          if (imgSource != currentDiv) {
+            setTimeout(function () {
+              $(`#${ID} img`).hide("slow");
+              $(`#${divID} img`).hide("slow");
+              divID = "";
+              imgSource = "";
+            }, 600);
+          } else {
+            divID = "";
+            imgSource = "";
+            imgFound++;
+          }
+        }
+
+        moves++;
+        $("#moves").html(moves);
+        if (imageArr.length == imgFound) {
+          setTimeout(function () {
+            alert(`Yes!!! You completed the game in ${moves} moves!`);
+          }, 1000);
+        }
+      }
+    }
+
+    function resetGame() {
+      shuffleImages();
+      moves = 0;
+      $("#moves").html(moves);
+      $("#images div img").hide();
+      imgFound = 0;
+      imgSource = "";
+      divID = "";
+    }
+
+    $(document).ready(function () {
+      for (let i = 1; i < 3; i++) {
+        $.each(imageArr, function (index, value) {
+          $("#images").append(
+            `<div id="card-${i}-${index}"><img src=${value} /></div>`
+          );
+        });
+      }
+
+      shuffleImages();
+      $("#images div").click(openCard);
+    });
+  </script>
+</html>

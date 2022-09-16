@@ -27,4 +27,8 @@ NOTE: The `/ajax` folder is purely code.  It does not connect to an acutal serve
 
 - Photo Zoom Effect
 
-<img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/photo-zoom.gif" alt="News ticker project" width=350 />
+<img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/photo-zoom.gif" alt="Photo zoom effect project" width=350 />
+
+- Memory Game
+
+<img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/memory-game.gif" alt="Memory game project" width=350 />
