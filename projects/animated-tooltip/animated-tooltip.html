@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <title>Animated Tooltip</title>
+</head>
+
+<style>
+    #container {
+        width: 60%;
+        margin: 50px auto;
+    }
+
+    p {
+        font-size: 20px;
+        text-align: justify;
+        line-height: 2;
+        padding: 5px;
+    }
+
+    a,
+    a:visited {
+        text-decoration: none;
+        font-size: 25px;
+        color: purple;
+        position: relative;
+        display: inline-block;
+    }
+
+    .tooltip {
+        display: none;
+        width: 100px;
+        height: 40px;
+        background-color: purple;
+        color: white;
+        font-size: 18px;
+        text-align: center;
+        border-radius: 20px;
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .tooltip::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 8px;
+        border-style: solid;
+        border-color: purple transparent transparent transparent;
+    }
+</style>
+
+<body>
+    <div id="container">
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. <a href="#" title="New Delhi">India</a> Incidunt, magnam? Error quam eius voluptates pariatur, esse veritatis dolor quia, <a href="#" title="Bangkok">Thailand</a> labore dolorum fuga perferendis. Maxime ad iure vitae officiis totam officia doloremque unde rerum repellat a saepe, ipsam expedita accusantium consectetur, quis non hic facere et asperiores laborum eaque fugiat eius quae dolorem? Quod ex dolores iste aliquid quisquam sunt quo deleniti reiciendis ipsa <a href="#" title="Jerusalem">Israel</a> beatae sed fugit aperiam, nam ullam numquam. Eum, repellat aspernatur. Voluptates corporis consequatur voluptatem impedit quia, error voluptate tempora officiis! Unde optio fugit suscipit facilis vero harum. <a href="#" title="Paris">France</a> Officiis obcaecati aliquam tempore quae odio ex praesentium dicta dolorem?</p>
+        <p>Lorem ipsum dolor <a href="#" title="Lisbon">Portugal</a> sit amet consectetur adipisicing elit. Consequatur nisi neque officiis fugit minus quaerat fugiat recusandae <a href="#" title="Beijing">China</a> doloribus tempore ipsa aliquid quasi ipsum sed ipsam numquam id at adipisci labore optio rerum quod, quam ea. Enim quod illum consequuntur quis eveniet libero quisquam doloremque? Veritatis <a href="#" title="Rome">Italy</a> temporibus et aliquam sed perferendis pariatur nobis earum quam dolorem esse. Obcaecati fuga magni aspernatur provident quas. Fugiat quod dolores exercitationem nam consequuntur et officiis tempore quaerat doloribus pariatur. Molestiae sapiente tenetur <a href="#" title="Berlin">Germany</a> sed exercitationem nesciunt deserunt, officiis praesentium architecto repellendus iure. Quaerat a quo animi? Molestiae, ea <a href="#" title="London">United Kindom</a> iusto ex voluptatum sunt sint itaque explicabo quisquam.</p>
+    </div>
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("a").append("<span class='tooltip'></span>");
+        $("a").hover(function(){
+            let capital = $(this).attr("title");
+            
+            $(this).find("span").text(capital).fadeIn(1000);
+        }, function(){
+            $(this).find("span").fadeOut(1000)
+        });
+    })
+</script>
+</html>

@@ -40,3 +40,7 @@ NOTE: The `/ajax` folder is purely code.  It does not connect to an acutal serve
 - Animated Graph
 
 <img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/animated-graph.gif" alt="Animated graph project" width=350 />
+
+- Animated Tooltip
+
+<img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/animated-tooltip.gif" alt="Animated tooltip project" width=350 />
