@@ -32,3 +32,7 @@ NOTE: The `/ajax` folder is purely code.  It does not connect to an acutal serve
 - Memory Game
 
 <img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/memory-game.gif" alt="Memory game project" width=350 />
+
+- Image Slider
+
+<img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/image-slider.gif" alt="Memory game project" width=350 />

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <title>Image Slider</title>
+  </head>
+
+  <style>
+    #gallery {
+      width: 450px;
+      margin: 25px auto;
+      position: relative;
+    }
+
+    #upper {
+      height: 450px;
+      margin-bottom: 10px;
+    }
+
+    #upper img {
+      width: 100%;
+      height: 75%;
+      object-fit: cover;
+      position: absolute;
+    }
+
+    #lower {
+      overflow: hidden;
+    }
+
+    #thumbs {
+      white-space: nowrap;
+    }
+
+    #thumbs img {
+      opacity: 0.4;
+    }
+
+    #thumbs img:hover {
+      opacity: 1;
+    }
+
+    #thumbs a {
+      display: inline-block;
+    }
+
+    .thumb img {
+      width: 150px;
+      height: 120px;
+      object-fit: cover;
+      margin-right: 5px;
+    }
+
+    .arrow {
+      position: absolute;
+      text-decoration: none;
+      color: black;
+      font-size: 36px;
+      bottom: 45px;
+    }
+
+    .arrow.disabled {
+      display: none;
+    }
+
+    #left {
+      left: -60px;
+    }
+
+    #right {
+      right: -60px;
+    }
+  </style>
+
+  <body>
+    <div id="gallery">
+      <div id="upper"></div>
+      <div id="lower">
+        <a href="#" class="arrow" id="left">&#9664;</a>
+        <div id="thumbs"></div>
+        <a href="#" class="arrow" id="right">&#9654;</a>
+      </div>
+    </div>
+  </body>
+
+  <script type="text/javascript">
+    const imagesArr = [
+      "../../images/Dragon_Ball_Super.jpeg",
+      "../../images/Dragon_Ball_Training.jpg",
+      "../../images/Dragon_Balls.jpg",
+      "../../images/Frieza_Cell_Buu.png",
+      "../../images/Gogeta.jpg",
+      "../../images/Goku_vs_Cell.jpg",
+      "../../images/Goku5.jpg",
+      "../../images/Goku6.jpg",
+      "../../images/Krillin_and_Family.jpg",
+      "../../images/Yamcha_Dead.jpg",
+    ];
+    let images;
+    let thumbWidth;
+    let totalThumbsShown;
+    let count = 0;
+
+    $(document).ready(function () {
+      $.each(imagesArr, function (index, value) {
+        $("#upper").append(`<img id="img-${index}" src="${value}" />`);
+        $("#thumbs").append(
+          `<a href="#" class="thumb" id="img-${index}"><img src="${value}" /></a>`
+        );
+      });
+
+      images = $("#upper").find("img");
+      thumbWidth = $(".thumb").css("width");
+      thumbWidth = thumbWidth.slice(0, thumbWidth.length - 2);
+
+      updateArrows();
+
+      $(".thumb").on("click", function () {
+        let thumbID = $(this).attr("id");
+
+        $.each(images, function (index, value) {
+          thumbID == $(value).attr("id") ? $(value).css("z-index", "1") : $(value).css("z-index", "-1");
+        });
+      });
+
+      $(".arrow").on("click", function () {
+        let arrowID = $(this).attr("id");
+        let scrollString;
+
+        if (arrowID == "left") {
+          scrollString = "+=";
+          count--;
+        } else {
+          scrollString = "-=";
+          count++;
+        }
+
+        $("#thumbs").animate({ marginLeft: scrollString + thumbWidth + "px" }, "fast", updateArrows);
+      });
+
+      function updateArrows() {
+        let totalImages = images.length;
+        let galleryWidth = $("#gallery").css("width");
+
+        galleryWidth = galleryWidth.slice(0, galleryWidth.length - 2);
+        totalThumbsShown = galleryWidth / thumbWidth;
+
+        let lastCount = totalImages - totalThumbsShown;
+
+        if (count == 0) {
+          $("#left").addClass("disabled");
+        } else if (count >= lastCount - 1) {
+          $("#right").addClass("disabled");
+        } else {
+          $("#left, #right").removeClass("disabled");
+        }
+      }
+    });
+  </script>
+</html>
