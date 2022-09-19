@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <title>Animated Graph</title>
+</head>
+
+<style>
+    #main {
+        margin: 25px auto;
+        width: 800px;
+    }
+
+    #left,
+    #right {
+        width: 50%;
+        float: left;
+        margin-top: 60px;
+    }
+    
+    #left {
+        text-align: center;
+    }
+
+    table {
+        border: 2px solid black;
+        margin: 20px auto;
+        width: 75%;
+    }
+
+    th {
+        border: 1px solid black;
+        text-align: center;
+    }
+
+    td {
+        border: 1px solid black;
+        text-align: center;
+        padding: 6px;
+    }
+
+    #graph {
+        border-left: 2px solid black;
+        border-bottom: 2px solid black;
+        height: 300px;
+        position: relative;
+    }
+
+    .row {
+        width: 100%;
+        height: 2px;
+        background-color: black;
+        position: absolute;
+    }
+
+    .content {
+        margin: -8px 0 0 -35px;
+    }
+
+    .column {
+        position: absolute;
+        bottom: 0;
+        width: 15%;
+        margin-left: 20px;
+    }
+
+    .column div {
+        text-align: center;
+        margin-top: -20px;
+    }
+
+    #btnDisplay {
+        border-radius: 5px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <div id="main">
+        <div id="left">
+            <table>
+                <thead>
+                    <th colspan="3">Data Table</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Class 1</td>
+                        <td></td>
+                        <td style="background-color: grey;"></td>
+                    </tr>
+                    <tr>
+                        <td>Class 2</td>
+                        <td></td>
+                        <td style="background-color: blue;"></td>
+                    </tr>
+                    <tr>
+                        <td>Class 3</td>
+                        <td></td>
+                        <td style="background-color: purple;"></td>
+                    </tr>
+                    <tr>
+                        <td>Class 4</td>
+                        <td></td>
+                        <td style="background-color: pink;"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <button id="btnDisplay" onclick="displayGraph();">Display</button>
+        </div>
+
+        <div id="right">
+            <div id="graph">
+                <div class="row" style="bottom: 25%;">
+                    <div class="content">25%</div>
+                </div>
+                <div class="row" style="bottom: 50%;">
+                    <div class="content">50%</div>
+                </div>
+                <div class="row" style="bottom: 75%;">
+                    <div class="content">75%</div>
+                </div>
+
+                <div class="column" id="column-0" style="background-color: grey; left: 0;"></div>
+                <div class="column" id="column-1" style="background-color: blue; left: 25%;"></div>
+                <div class="column" id="column-2" style="background-color: purple; left: 50%;"></div>
+                <div class="column" id="column-3" style="background-color: pink; left: 75%;"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript">
+    function displayGraph() {
+        $("tbody tr").each(function(index) {
+            let cell = $(this).children("td").eq(1).text();
+
+            $(".column").css("height", "0");
+            $(`#column-${index}`).animate({ height: cell }, 1500).html(`<div>${cell}</div>`);
+        })
+    }
+
+    $(document).ready(function() {
+        let arr = [25, 90, 60, 53];
+        let cells = $("tr td");
+
+        for(let i=1, j=0; i<cells.length; i+=3) {
+            cells[i].innerHTML = `${arr[j]}%`;
+            j++;
+        }
+
+        displayGraph();
+    })
+</script>
+</html>

@@ -35,4 +35,8 @@ NOTE: The `/ajax` folder is purely code.  It does not connect to an acutal serve
 
 - Image Slider
 
-<img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/image-slider.gif" alt="Memory game project" width=350 />
+<img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/image-slider.gif" alt="Image slider project" width=350 />
+
+- Animated Graph
+
+<img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/animated-graph.gif" alt="Animated graph project" width=350 />
