@@ -44,3 +44,7 @@ NOTE: The `/ajax` folder is purely code.  It does not connect to an acutal serve
 - Animated Tooltip
 
 <img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/animated-tooltip.gif" alt="Animated tooltip project" width=350 />
+
+- Filterable Portfolio
+
+<img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/filterable-portfolio.gif" alt="Filterable portfolio project" width=350 />

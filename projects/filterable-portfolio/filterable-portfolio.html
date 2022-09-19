@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <title>Filterable Portfolio</title>
+</head>
+
+<style>
+    #container {
+        width: 750px;
+        height: 580px;
+        border: 2px solid grey;
+        margin: 25px auto;
+        border-radius: 20px;
+    }
+
+    #filter {
+        list-style-type: none;
+    }
+
+    #filter li {
+        float: left;
+        font-size: 25px;
+        border-right: 2px solid grey;
+        margin-right: 10px;
+        padding-right: 10px;
+    }
+
+    #filter li:last-child {
+        border-right: none;
+    }
+
+    #filter li a {
+        color: silver;
+        text-decoration: none;
+    }
+
+    #filter li a:hover {
+        color: grey;
+    }
+
+    #filter li.current a {
+        color: black;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+
+    #portfolio {
+        list-style-type: none;
+        width: 680px;
+        float: left;
+    }
+
+    #portfolio li {
+        float: left;
+        margin: 5px;
+        padding: 5px;
+        text-align: center;
+        width: 200px;
+        border: 1px solid grey;
+        border-radius: 2px;
+        font-size: 20px;
+       
+    }
+
+    #portfolio li a {
+        text-decoration: none;
+        color: #0981F9;
+    }
+
+    #portfolio li a:hover {
+        text-decoration: underline;
+    }
+
+    #portfolio img {
+        width: 100%;
+        aspect-ratio: 200/120;
+        object-fit: cover;
+    }
+</style>
+
+<body>
+    <div id="container">
+        <ul id="filter">
+            <li class="current"><a href="#">All</a></li>
+            <li><a href="#">Design</a></li>
+            <li><a href="#">Product</a></li>
+            <li><a href="#">Coming Soon</a></li>
+        </ul>
+        <ul id="portfolio">
+            <li class="product"><a href="#"><img src="../../images/Dragon_Ball_Super.jpeg" alt="Accounting">Accounting</a></li>
+            <li class="design"><a href="#"><img src="../../images/Dragon_Ball_Training.jpg" alt="College">College</a></li>
+            <li class="product"><a href="#"><img src="../../images/Dragon_Balls.jpg" alt="Builders">Builders</a></li>
+            <li class="design coming-soon"><a href="#"><img src="../../images/Frieza_Cell_Buu.png" alt="Coming Soon">Coming Soon</a></li>
+            <li class="product"><a href="#"><img src="../../images/Gogeta.jpg" alt="Campus">Campus</a></li>
+            <li class="design"><a href="#"><img src="../../images/Goku5.jpg" alt="Crypters">Crypters</a></li>
+            <li class="product"><a href="#"><img src="../../images/Goku6.jpg" alt="HR">HR</a></li>
+            <li class="design coming-soon"><a href="#"><img src="../../images/Goku_vs_Cell.jpg" alt="Coming Soon">Coming Soon</a></li>
+            <li class="product"><a href="#"><img src="../../images/Krillin_and_Family.jpg" alt="Inventory">Inventory</a></li>
+        </ul>
+    </div>
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#filter a").click(function() {
+            let filterValue = $(this).text().toLowerCase().replace(" ", "-");
+
+            $("#filter .current").removeClass("current");
+            $(this).parent().addClass("current");
+            $("#portfolio li").show();
+
+            if (filterValue != "all") {
+                $("#portfolio li").not(`.${filterValue}`).hide();
+            }
+        })
+    })
+</script>
+</html>
