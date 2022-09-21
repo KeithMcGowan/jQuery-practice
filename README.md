@@ -48,3 +48,7 @@ NOTE: The `/ajax` folder is purely code.  It does not connect to an acutal serve
 - Filterable Portfolio
 
 <img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/filterable-portfolio.gif" alt="Filterable portfolio project" width=350 />
+
+- Tic Tac Toe Game
+
+<img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/tic-tac-toe.gif" alt="Tic tac toe game project" width=350 />

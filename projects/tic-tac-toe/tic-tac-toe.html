@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <title>Tic Tac Toe Game</title>
+</head>
+
+<style>
+    #grid {
+        width: 400px;
+        margin: 30px auto;
+    }
+
+    .square {
+        border: 1px solid black;
+        width: 80px;
+        aspect-ratio: 1;
+        padding: 20px;
+        text-align: center;
+        font-size: 50px;
+        float: left;
+        font-family: Brush Script MT, Brush Script Std, cursive;
+    }
+
+    #square-1,
+    #square-2,
+    #square-3 {
+        border-top: none;
+    }
+
+    #square-3,
+    #square-6,
+    #square-9 {
+        border-right: none;
+    }
+
+    #square-7,
+    #square-8,
+    #square-9 {
+        border-bottom: none;
+    }
+
+    #square-1,
+    #square-4,
+    #square-7 {
+        border-left: none;
+    }
+
+    #container {
+        clear: left;
+        text-align: center;
+        display: none;
+    }
+
+    #result,
+    #btnPlay {
+        background-color: black;
+        color: white;
+        font-size: 30px;
+        padding: 5px;
+        margin-top: 20px;
+        height: 50px;
+        cursor: pointer;
+    }
+
+    #result.win {
+        background-color: green;
+    }
+
+    #result.lose {
+        background-color: red;
+    }
+
+    #result.draw {
+        background-color: grey;
+    }
+
+    .x-mark::after {
+        content: "X";
+        color: red;
+    }
+
+    .o-mark::after {
+        content: "O";
+        color: blue;
+    }
+</style>
+
+<body>
+    <div id="grid"></div>
+    <div id="container">
+        <button id="result" disabled>Test</button>
+        <button id="btnPlay" onclick="resetGame();">Play</button>
+    </div>
+</body>
+
+<script type="text/javascript">
+    let finished;
+
+    $(document).ready(function() {
+        finished = false;
+        for (let i=1; i<=9; i++) {
+            $("#grid").append(`<div id="square-${i}" class="square" data-position="${i}"></div>`);
+        }
+
+        $(".square").on("click", yourTurn);
+    })
+
+    function yourTurn() {
+        if (!finished) {
+            if ($(this).attr("class").indexOf("marked") < 0) {
+                $(this).addClass("x-mark marked");
+                finished = findWinner($(this).data("position"), "x-mark");
+                
+                setTimeout(() => {
+                    computerTurn();
+                }, 500);
+            } else {
+                alert("This square is already marked!")
+            }
+        } else if (finished) {
+            alert("The game is over!");
+        }
+
+        if ($(".marked").length == 9 && !finished) {
+            displayResult("Draw", "draw");
+        } 
+    }
+
+    function computerTurn() {
+        let unclicked = $(".square:not(.marked)");
+        let position = Math.floor(Math.random() * unclicked.length);
+        let randomSquare = unclicked[position];
+        
+        if (!finished) {
+            $(randomSquare).addClass("o-mark marked");
+            finished = findWinner($(randomSquare).data("position"), "o-mark");
+        }
+    }
+    
+    function findWinner(pos, mark) {
+        let winningPositions = [
+            [1, 2, 3],
+            [1, 4, 7],
+            [1, 5, 9],
+            [2, 5, 8],
+            [3, 6, 9],
+            [3, 5, 7],
+            [4, 5, 6],
+            [7, 8, 9]
+        ];
+
+        if ($(".x-mark").length >= 3 || $(".o-mark").length >= 3) {
+            $.each(winningPositions, function(index, winningArray) {
+                if (winningArray.indexOf(pos) >= 0) {
+                    let cellsInARow = 0;
+
+                    $.each(winningArray, function(key, value) {
+                        let currentMark = $(`#square-${value}`).attr("class");
+
+                        if (currentMark.indexOf(mark) >= 0) {
+                            cellsInARow++;
+                            
+                            if (cellsInARow == 3) {
+                                finished = true;
+
+                                if (mark == "x-mark") {
+                                    result = "You Won!";
+                                    status = "win";
+                                } else {
+                                    result = "You Lost!";
+                                    status = "lose";
+                                }
+                                displayResult(result, status);
+                            }
+                        }
+                    })
+                }
+            })
+        }
+
+        return finished;
+    }
+
+    function displayResult(result, status) {
+        $("#container").show();
+        $("#result").html(result).addClass(status);
+    }
+
+    function resetGame() {
+        $("#container").hide();
+        $(".square").removeClass("marked x-mark o-mark");
+        $("#result").removeClass();
+        finished = false;
+    }
+</script>
+</html>
