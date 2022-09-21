@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <title>Reading Progress Indicator</title>
+</head>
+
+<style>
+    p,
+    img {
+        max-width: 800px;
+        margin-inline: auto;
+        display: block;
+        text-align: justify;
+    }
+
+    #container {
+        position: fixed;
+        top: 5px;
+    }
+
+    #indicator {
+        position: fixed;
+        top: 0;
+        height: 5px;
+        width: 100%;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    }
+
+    progress::-webkit-progress-bar {
+        background: none;
+    }
+
+    progress::-moz-progress-bar {
+        background-color: none;
+    }
+
+    progress::-webkit-progress-value {
+        background-color: red;
+    }
+
+    progress::-moz-progress-value {
+        background-color: blue;
+    }
+</style>
+
+<body>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis deleniti fugit ut minima quia nobis harum et neque dolorem, asperiores, ex similique quam laboriosam velit. Sequi ipsam tempore saepe voluptate, temporibus recusandae. Rem quis at voluptate facilis id adipisci saepe magni ratione repellat distinctio dolores assumenda corrupti nobis vitae totam dicta dolor itaque debitis, commodi molestias eos autem accusamus hic. Et molestiae facere quos enim vitae at doloremque consectetur. Reprehenderit amet consequuntur tempora id voluptas deserunt ea at aperiam cum. Aliquam alias itaque adipisci nisi officia, commodi reprehenderit, veniam obcaecati tempore quasi illum similique. Unde voluptas consectetur expedita delectus eius reprehenderit blanditiis quaerat rerum beatae fuga voluptatem aliquid, aut impedit sint quae aspernatur rem? Aperiam inventore, magni eaque distinctio explicabo facere? Maiores ab illum, quod rem ut consequatur esse quo saepe maxime ullam similique minus veniam soluta laboriosam nulla, fuga totam, magni culpa dolor cupiditate distinctio assumenda eaque accusantium delectus.</p>
+    <img src="../../images/Yamcha_Dead.jpg" alt="Dead Yamcha." width="350">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui maiores esse enim, necessitatibus corrupti ea voluptate incidunt non, dolor dolorem in! Totam expedita nam sequi consequuntur veniam qui nemo quo, sapiente, quisquam aspernatur, natus ad fugiat in voluptas amet id reiciendis et similique porro. Soluta placeat tempora dicta molestiae voluptatem officia praesentium, omnis, debitis error alias mollitia tenetur autem sed iusto pariatur officiis delectus ipsa. Esse aliquam doloribus atque quae voluptas voluptatem asperiores culpa tenetur magnam eaque molestias officiis eius rem impedit quaerat quos illo veritatis earum, maiores fugiat omnis recusandae natus. Sit eos numquam deleniti, reiciendis consequatur culpa voluptatum est error suscipit vel itaque dicta repellat sint possimus, dignissimos libero quasi! Quam ab nihil quos totam corporis voluptate ducimus! Natus dolore quod tenetur assumenda, voluptatum illum optio possimus veritatis recusandae praesentium reprehenderit suscipit. Illum quia in illo natus odit quos tempore impedit explicabo nulla. Vero pariatur ex quaerat repudiandae.</p>
+    <img src="../../images/Krillin_and_Family.jpg" alt="Krillin and family." width="350">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem aliquam iste, nobis laborum velit qui temporibus quis reiciendis possimus excepturi expedita earum illum, ad similique fugit quisquam! Eius, enim vel. Necessitatibus, vel sint. Ea molestiae quidem vel eos exercitationem alias accusantium recusandae pariatur officiis cumque dolor perspiciatis necessitatibus dolorum porro dolorem neque debitis aspernatur, et eveniet consequuntur fugit quibusdam! Repellat, esse error laborum necessitatibus eius ipsam delectus nam laboriosam nostrum dolorem et quas itaque rerum quam dicta dolorum quod iusto. Molestiae voluptatem, mollitia illo hic minus deleniti, odio assumenda deserunt omnis iusto commodi dicta reiciendis sint dignissimos obcaecati suscipit ullam porro pariatur! Voluptas, excepturi autem facilis facere nobis nemo perferendis sit, fuga reprehenderit ut eius magni tenetur officiis deserunt ipsam, quod perspiciatis! Iusto in dicta quia et repudiandae tempora modi deleniti saepe veritatis assumenda dolores, beatae hic culpa tempore doloremque maxime facere labore itaque obcaecati, maiores architecto quaerat? Ipsa, itaque.</p>
+    <img src="../../images/Goku_vs_Cell.jpg" alt="Goku vs Cell." width="350">
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem laboriosam, error placeat suscipit quam ipsam beatae consequatur praesentium explicabo aliquid iste cumque. Temporibus dolorum aliquam perspiciatis blanditiis. Sit hic voluptates nisi doloremque voluptatum natus sapiente vitae illum facere voluptas maiores, nam voluptatem officiis et consequatur asperiores itaque repellendus veritatis quia veniam consectetur ipsam! Deleniti earum culpa quam debitis! Iure tempore illo in quod animi recusandae dolorum voluptates fuga exercitationem suscipit, labore quos nesciunt! Officiis repellat vitae ipsam delectus numquam ipsum distinctio fuga consectetur id molestiae placeat eius quam laborum, explicabo beatae optio cum, nulla iure aut? Rem aliquid delectus numquam quasi corporis, dicta, beatae nesciunt consequatur animi iste, dolores soluta suscipit? Iste quam totam accusantium distinctio praesentium ducimus ut aperiam obcaecati veritatis voluptate nemo, voluptates voluptatum ad vitae vero illo. Unde, dignissimos. Quaerat similique qui repellendus necessitatibus atque debitis labore eaque odit ea voluptates. Quae impedit saepe nobis neque praesentium!</p>
+    <img src="../../images/Goku6.jpg" alt="Goku." width="350">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla sapiente eum quia culpa porro voluptatem modi explicabo sint necessitatibus voluptas vel deserunt numquam minima hic fugiat delectus enim ad, quos distinctio! Nam beatae neque distinctio. Accusamus possimus voluptate, quo praesentium quisquam, labore, fugit minus eligendi qui impedit tempore. Est, voluptas! Esse repellendus nisi quibusdam, culpa nulla, earum rem architecto omnis accusamus neque repudiandae iste molestias natus odit, dicta temporibus deleniti quas quae quo asperiores in ex. Temporibus quas ipsum adipisci officia quae, molestias, sequi laborum voluptas voluptate, in modi sapiente? Non ex architecto officiis vero tempora, itaque tempore et suscipit tenetur expedita soluta voluptatibus a enim mollitia distinctio beatae consequatur sit quam quibusdam sint eveniet doloremque aliquam repudiandae. Earum reiciendis ut fugit excepturi sit ipsum cumque vero voluptates enim laudantium consectetur, molestias consequuntur! Tempora necessitatibus sequi quo tenetur id nobis earum in dolores voluptatem libero, porro, sint dolor. Illum, libero.</p>
+    <img src="../../images/Goku5.jpg" alt="Goku." width="350">
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident sed dolorem omnis ratione, quae porro ad fugit voluptates, possimus vero soluta aliquam at dolore sunt enim corrupti sint harum atque odio. Laboriosam illum incidunt qui quod, voluptatibus vitae nesciunt libero temporibus nam aliquid. Eveniet laborum mollitia non sint magni veniam quo ipsam provident fugit a. Molestias voluptatibus eligendi nulla, eaque quibusdam aut nemo, hic iure exercitationem eum modi. Fugiat dolorum laborum rem! Dolore velit saepe facilis, praesentium assumenda explicabo, inventore optio rerum iste animi perferendis quaerat voluptatem, odit sequi enim nobis alias pariatur eum libero. Velit ducimus debitis iure, deserunt corporis aliquam vero qui! Ducimus eligendi corrupti harum distinctio modi, similique repudiandae sequi eveniet deserunt tempore incidunt quas eaque soluta quidem asperiores magnam molestiae! Maxime beatae rem magni, eligendi similique saepe quia, reiciendis quas adipisci animi quaerat omnis? Eaque non dolorum unde, perspiciatis dolor sequi reprehenderit nam voluptates exercitationem ex?</p>
+    <img src="../../images/Frieza_Cell_Buu.png" alt="Frieza, Cell, and Buu." width="350">
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("body").prepend("<div id='container'><progress id='indicator' value='0' max='100'></progress></div>");
+
+        $(window).scroll(function() {
+            let windowHeight = $(window).height();
+            let documentHeight = $(document).height();
+            let scrollPostion = $(window).scrollTop();
+            let progress = (scrollPostion / (documentHeight - windowHeight)) * 100;
+
+            $("#indicator").attr("value", progress);
+        })
+    });
+</script>
+</html>
