@@ -56,3 +56,7 @@ NOTE: The `/ajax` folder is purely code.  It does not connect to an acutal serve
 - Progress Indicator
 
 <img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/progress-indicator.gif" alt="Progress indicator project" width=350 />
+
+- Flying Bird Game
+
+<img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/flying-bird.gif" alt="Flying bird game project" width=350 />

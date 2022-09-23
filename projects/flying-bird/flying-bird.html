@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <title>Flying Bird Game</title>
+</head>
+
+<style>
+    body {
+        background-color: silver;
+        font-family: Comic Sans, Comic Sans MS, cursive;;
+    }
+
+    button {
+        font-size: 30px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    #restart,
+    #initial,
+    #details {
+        text-align: center;
+        font-size: 30px;
+        color: white;
+    }
+
+    p,
+    #details {
+        font-size: 42px;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: black;
+    }
+
+    #restart {
+        height: 40px;
+    }
+
+    #btnRestart,
+    #details,
+    #container {
+        display: none;
+    }
+
+    #container {
+        height: 400px;
+        width: 90%;
+        max-width: 1000px;
+        background-color: white;
+        background: url("sky.png");
+        background-size: cover;
+        background-position: left;
+        background-repeat: no-repeat;
+        margin: 30px auto;
+        position: relative;
+        overflow: hidden;
+    }
+
+    #bird {
+        background: url("bird.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 40px;
+        width: 45px;
+        position: absolute;
+        top: 20%;
+        left: 180px;
+    }
+
+    .pipe {
+        width: 50px;
+        background-color: #551515;
+        height: 130px;
+        position: absolute;
+        right: -50px;
+    }
+
+    #pipe1 {
+        top: 0;
+        border-bottom: 7px solid green;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
+    #pipe2 {
+        bottom: 0;
+        border-top: 7px solid green;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+</style>
+
+<body>
+    <div id="restart">
+        <button id="btnRestart">Restart</button>
+    </div>
+
+    <div id="initial">
+        <p>Player: Use Spacebar to Control the Bird</p>
+        <button id="btnStart">Start</button>
+    </div>
+
+    <div id="container">
+        <div id="bird"></div>
+        <div id="pipe1" class="pipe"></div>
+        <div id="pipe2" class="pipe"></div>
+    </div>
+    
+    <div id="details">
+        <b>Score: </b> <span id="score">0</span>
+    </div>
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        let gameId;
+        let containerWidth = parseInt($("#container").width());
+        let containerHeight = parseInt($("#container").height());
+        let initialPosition = parseInt($(".pipe").css("right"));
+        let initialPipeHeight = parseInt($(".pipe").css("height"));
+        let moving = false;
+        let gameOver = false;
+        let bird = $("#bird");
+        let speed = 4;
+        let score = 0;
+        let scoreUpdated = false;
+
+        $("#btnStart").click(function() {
+            $("#initial").hide();
+            $("#container").show();
+            $("#details").show();
+
+            let game = function() {
+                let currentPosition = parseInt($(".pipe").css("right"));
+
+                if (collision(bird, $("#pipe1")) || collision(bird, $("#pipe2")) || parseInt(bird.css("top")) <= 0 || parseInt(bird.css("top")) >= containerHeight - bird.height()) {
+                    bird.css("backgroundImage", "url('bird_crash.png')");
+                    stopGame();
+                } else {
+                    if (parseInt(bird.css("left")) > containerWidth - currentPosition && scoreUpdated == false) {
+                        score++;
+                        $("#score").text(score);
+                        scoreUpdated = true;
+                    }
+
+                    if (currentPosition > containerWidth) {
+                        let changedPipeHeight = Math.floor(Math.random() * 100);
+    
+                        speed++;
+                        $("#pipe1").css("height", initialPipeHeight + changedPipeHeight);
+                        $("#pipe2").css("height", initialPipeHeight - changedPipeHeight);
+                        currentPosition = initialPosition;
+                        scoreUpdated = false;
+                    }
+                    
+                    $(".pipe").css("right", currentPosition + speed);
+    
+                    if (moving == false) {
+                        moveDown();
+                    }
+                }
+
+                gameId = requestAnimationFrame(game);
+            }
+
+            gameId = requestAnimationFrame(game);
+        })
+
+        function collision(player, pipe) {
+            let birdWidth = bird.width();
+            let birdHeight = bird.height();
+            let birdLeft = player.offset().left;
+            let birdRight = birdLeft + birdWidth;
+            let birdTop = player.offset().top;
+            let birdBottom = birdTop + birdHeight;
+
+            let pipeWidth = pipe.width();
+            let pipeHeight = pipe.height();
+            let pipeLeft = pipe.offset().left;
+            let pipeRight = pipeLeft + pipeWidth;
+            let pipeTop = pipe.offset().top;
+            let pipeBottom = pipeTop + pipeHeight;
+
+            if(birdBottom < pipeTop || birdTop > pipeBottom || birdLeft > pipeRight || birdRight < pipeLeft) {
+                return false;
+            }
+
+            return true;
+        }
+
+        function stopGame() {
+            cancelAnimationFrame(gameId);
+            gameOver = true;
+            $("#btnRestart").show();
+        }
+
+        $(document).on("keydown", function(e) {
+            let key = e.keyCode;
+
+            if (key == 32 && moving == false && gameOver == false) {
+                bird.css("backgroundImage", "url('bird_flap.png')");
+
+                setTimeout(() => {
+                    bird.css("backgroundImage", "url('bird.png')");
+                }, 100);
+
+                moving = requestAnimationFrame(moveUp);
+            }
+        })
+
+        $(document).on("keyup", function(e) {
+            let key = e.keyCode;
+
+            if (key == 32) {
+                cancelAnimationFrame(moving);
+                moving = false;
+            }
+        })
+
+        $("#btnRestart").click(function() {
+            location.reload();
+        })
+
+        function moveDown() {
+            bird.css("top", parseInt(bird.css("top")) + 4);
+        }
+
+        function moveUp() {
+            if (gameOver == false) {
+                bird.css("top", parseInt(bird.css("top")) - 6);
+                moving = requestAnimationFrame(moveUp);
+            }
+        }
+    })
+</script>
+</html>
