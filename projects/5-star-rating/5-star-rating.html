@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>5-Star Rating System</title>
+</head>
+
+<style>
+    #container {
+        width: 400px;
+        height: 250px;
+        margin: 50px auto;
+    }
+
+    ul {
+        padding: 0;
+        margin: 0;
+        cursor: pointer;
+    }
+
+    li {
+        display: inline-block;
+        font-size: 35px;
+        padding: 10px;
+        color: #CCCCCC;
+    }
+
+    #message {
+        font-size: 25px;
+    }
+
+    .hover {
+        color: #FFCC36;
+    }
+
+    .clicked {
+        color: sandybrown;
+    }
+</style>
+
+<body>
+    <div id="container">
+        <ul>
+            <li><i class="fa fa-star fa-fw"></i></li>
+            <li><i class="fa fa-star fa-fw"></i></li>
+            <li><i class="fa fa-star fa-fw"></i></li>
+            <li><i class="fa fa-star fa-fw"></i></li>
+            <li><i class="fa fa-star fa-fw"></i></li>
+        </ul>
+
+        <div id="message">
+            Please rate your overall experience!
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("li").hover(function() {
+            let current = $(this);
+
+            $("li").each(function(i) {
+                $(this).addClass("hover");
+
+                if (i == current.index()) {
+                    return false;
+                }
+            })
+        }, function() {
+            $("li").removeClass("hover");
+        });
+
+        $("li").click(function() {
+            $("li").removeClass("clicked");
+            $(".hover").addClass("clicked");
+            $("#message").html(`Thanks! You have rated this ${$(".clicked").length} star${$(".clicked").length > 1 ? "s" : ""}!`);
+        })
+    });
+</script>
+</html>

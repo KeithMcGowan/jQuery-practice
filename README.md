@@ -60,3 +60,7 @@ NOTE: The `/ajax` folder is purely code.  It does not connect to an acutal serve
 - Flying Bird Game
 
 <img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/flying-bird.gif" alt="Flying bird game project" width=350 />
+
+- 5-Star Rating System
+
+<img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/5-star-rating.gif" alt="5-star rating system project" width=350 />
