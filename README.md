@@ -64,3 +64,7 @@ NOTE: The `/ajax` folder is purely code.  It does not connect to an acutal serve
 - 5-Star Rating System
 
 <img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/5-star-rating.gif" alt="5-star rating system project" width=350 />
+
+- Multi-Step Form
+
+<img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/multi-step-form.gif" alt="Multi-step form project" width=350 />

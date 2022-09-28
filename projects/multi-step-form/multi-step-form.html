@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <title>Multi-Step Form with Progress Bar</title>
+</head>
+
+<style>
+    #container {
+        width: 520px;
+        border: 2px solid black;
+        margin: 50px auto;
+        padding: 10px;
+        border-radius: 20px;
+    }
+
+    #progress-bar .icon {
+        background-color: grey;
+        color: white;
+        display: inline-block;
+        padding: 12px;
+        border-radius: 50%;
+    }
+    
+    #progress-bar .bar {
+        display: inline-block;
+        width: 200px;
+        height: 10px;
+        background-color: grey;
+        border-radius: 20px;
+    }
+
+    #progress-bar .active {
+        background: green;
+    }
+
+    form div {
+        width: 300px;
+        margin: 20px auto;
+        padding: 10px;
+        background-color: dimgrey;
+    }
+
+    .heading {
+        font-size: 30px;
+        color: white;
+        font-weight: bold;
+        margin: 0 0 15px 0;
+    }
+
+    input:not([type="submit"]),
+    ::placeholder {
+        font-size: 20px;
+    }
+
+    input[type="submit"],
+    button {
+        width: 100px;
+        height: 30px;
+        font-size: 20px;
+        border: 1px solid white;
+        color: white;
+        background: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    #personal,
+    #contact {
+        display: none;
+    }
+</style>
+
+<body>
+    <div id="container">
+        <div id="progress-bar">
+            <span id="icon0" class="icon active">1</span>
+            <span id="bar1" class="bar"></span>
+            <span id="icon1" class="icon">2</span>
+            <span id="bar2" class="bar"></span>
+            <span id="icon2" class="icon">3</span>
+        </div>
+
+        <form action="/projects/multi-step-form/multi-step-form.html" method="GET">
+            <div id="login" class="info">
+                <p class="heading">Account Details</p>
+                <input type="text" id="username" placeholder="User Name">
+                <br><br>
+                <input type="password" id="password" placeholder="Password">
+                <br><br>
+                <button id="btnNext" class="btn next" data-num="1">Next</button>
+            </div>
+
+            <div id="personal" class="info">
+                <p class="heading">Personal Details</p>
+                <input type="text" name="firstName" placeholder="First Name">
+                <br><br>
+                <input type="text" name="lastName" placeholder="Last Name">
+                <br><br>
+                <button id="btnPrev" class="btn previous" data-num="1">Previous</button>
+                <button id="btnNext1" class="btn next" data-num="2">Next</button>
+            </div>
+
+            <div id="contact" class="info">
+                <p class="heading">Contact Details</p>
+                <input type="email" id="email" placeholder="Email">
+                <br><br>
+                <input type="tel" id="phone" placeholder="Phone number" pattern="[0-9]{10}">
+                <br><br>
+                <button id="btnPrev1" class="btn previous" data-num="2">Previous</button>
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".next").click(function(e) {
+            e.preventDefault();
+
+            let elements = $(this).parent().children();
+            let error = validate(elements);
+            
+            if (error == 0) {
+                let nextDiv = $(this).parent().next().attr("id");
+                let dataNum = $(this).data("num");
+
+                $(".info").css("display", "none");
+                $(`#${nextDiv}`).fadeIn();
+                $(`#bar${dataNum}, #icon${dataNum}`).addClass("active");
+            } else {
+                alert("Please fill out all details.");
+            }
+            
+        })
+
+        $(".previous").click(function(e) {
+            e.preventDefault();
+
+            let prevDiv = $(this).parent().prev().attr("id");
+            let dataNum = $(this).data("num");
+
+            $(".info").css("display", "none");
+            $(`#${prevDiv}`).fadeIn();
+            $(`#bar${dataNum}, #icon${dataNum}`).removeClass("active");
+        })
+
+        $("input[type=submit]").click(function() {
+            let siblings = $(this).parent().children();
+            let error = validate(siblings);
+
+            if (error != 0) {
+                alert("Please fill out all details.");
+                return false;
+            }
+        })
+
+        function validate(items) {
+            let empty = 0;
+
+            $.each(items, function(key, item) {
+                if ($(item).prop("tagName").toLowerCase() == "input" && item.value == "") {
+                    empty++;
+                }
+            })
+
+            return empty;
+        }
+    })
+</script>
+</html>
