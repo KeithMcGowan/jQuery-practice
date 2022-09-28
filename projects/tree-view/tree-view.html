@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <title>Tree View</title>
+</head>
+
+<style>
+    #tree-view,
+    #tree-view ul {
+        list-style-type: none;
+        font-size: 30px;
+    }
+
+    #tree-view .open,
+    #tree-view .close {
+        cursor: pointer;
+    }
+
+    #tree-view .open > ul {
+        display: none;
+    }
+
+    #tree-view .open::before {
+        content: "\2295";
+        font-size: 15px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-bottom: 5px;
+    }
+
+    #tree-view .close::before {
+        content: "\2296";
+        font-size: 15px;
+    }
+</style>
+
+<body>
+    <ul id="tree-view">
+        <li class="open">
+            Mens
+            <ul>
+                <li class="open">
+                    Shirts
+                    <ul>
+                        <li>Long Sleeve</li>
+                        <li class="open">
+                            Short Sleeve
+                            <ul>
+                                <li>Polos</li>
+                                <li>Graphic Tees</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>Pants</li>
+            </ul>
+        </li>
+        <li class="open">
+            Womens
+            <ul>
+                <li>Tops</li>
+                <li class="open">
+                    Bottoms
+                    <ul>
+                        <li class="open">
+                            Pants
+                            <ul>
+                                <li>Jeans</li>
+                                <li>Workout</li>
+                            </ul>
+                        </li>
+                        <li>Skirts</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>Shoes</li>
+    </ul>
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#tree-view .open").click(function(e) {
+            e.stopPropagation();
+            $(this).toggleClass("close open");
+        })
+    });
+</script>
+</html>

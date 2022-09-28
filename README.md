@@ -68,3 +68,7 @@ NOTE: The `/ajax` folder is purely code.  It does not connect to an acutal serve
 - Multi-Step Form
 
 <img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/multi-step-form.gif" alt="Multi-step form project" width=350 />
+
+- Tree View
+
+<img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/tree-view.gif" alt="Tree view project" width=350 />
