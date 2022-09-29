@@ -72,3 +72,7 @@ NOTE: The `/ajax` folder is purely code.  It does not connect to an acutal serve
 - Tree View
 
 <img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/tree-view.gif" alt="Tree view project" width=350 />
+
+- To-Do List
+
+<img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/to-do-list.gif" alt="To-do list project" width=350 />

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <title>To-Do List</title>
+</head>
+
+<style>
+    h1 {
+        text-align: center;
+        color: grey;
+        margin: 15px auto;
+    }
+
+    #list p {
+        width: 500px;
+        margin: 0 auto;
+        font-size: 16px;
+        padding: 20px;
+        box-shadow: 0 5px 5px rgba(0, 0, 0, .2);
+    }
+
+    #list p .close {
+        float: right;
+        cursor: pointer;
+        font-size: 20px;
+    }
+
+    #list p .close:hover {
+        color: red;
+    }
+
+    #add-item {
+        width: 380px;
+        height: 60px;
+        margin: 8px auto;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #item {
+        background-color: silver;
+        width: 280px;
+        height: 40px;
+        margin: 4px;
+        padding: 5px 10px;
+        font-size: 16px;
+        border: none;
+        line-height: 30px;
+    }
+
+    #item:focus {
+        outline: none;
+        background-color: ghostwhite;
+    }
+
+    #btnAdd {
+        width: 50px;
+        aspect-ratio: 1;
+        color: white;
+        background-color: cornflowerblue;
+        font-size: 30px;
+        border: none;
+        cursor: pointer;
+    }
+
+    #btnAdd:hover {
+        background-color: dodgerblue;
+    }
+</style>
+
+<body>
+    <h1>To-Do List</h1>
+
+    <div id="list">
+        <p>
+            <input type="checkbox">
+            <span>Pay electricity bill</span>
+            <span class="close">&#9746;</span>
+        </p>
+        <p>
+            <input type="checkbox" checked>
+            <span>Wardrobe organizing</span>
+            <span class="close">&#9746;</span>
+        </p>
+        <p>
+            <input type="checkbox">
+            <span>Record YouTube video</span>
+            <span class="close">&#9746;</span>
+        </p>
+        <p>
+            <input type="checkbox" checked>
+            <span>Edit jQuery video</span>
+            <span class="close">&#9746;</span>
+        </p>
+    </div>
+
+    <div id="add-item">
+        <input type="text" id="item" placeholder="Add item">
+        <button id="btnAdd">&#43;</button>
+    </div>
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#btnAdd").click(function() {
+            let newItem = $("#item").val();
+
+            if(newItem != "") {
+                $("#list").append(`
+                    <p>
+                        <input type="checkbox">
+                        <span>${newItem}</span>
+                        <span class="close">&#9746;</span>
+                    </p>
+                `);
+                $("#item").val("");
+            }
+        })
+
+        $("body").on("click", ".close", function() {
+            $(this).parent().remove();
+        })
+    })
+</script>
+</html>
