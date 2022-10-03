@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <title>Word Search Game</title>
+</head>
+
+<style>
+    h1 {
+        font-size: 40px;
+        color: orange;
+        text-shadow: 1px 1px black;
+        text-align: center;
+    }
+
+    #container  {
+        width: 810px;
+        height: 650px;
+        margin: 0 auto;
+    }
+
+    #hint {
+        width: 200px;
+        height: 572px;
+        float: left;
+        text-align: center;
+        font-size: 30px;
+        border: 1px solid black;
+        display: none;
+    }
+
+    #letters {
+        width: 580px;
+        height: 580px;
+        float: right;
+    }
+
+    .individual {
+        width: 40px;
+        aspect-ratio: 1;
+        float: left;
+        border: 1px solid black;
+        border-radius: 2px;
+        font-size: 25px;
+        text-align: center;
+        margin: 3px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .done {
+        text-decoration: line-through;
+    }
+
+    .clicked {
+        background-color: lightgrey;
+    }
+
+    .correct {
+        background-color: orange;
+        color: white;
+    }
+
+    #message {
+        font-size: 24px;
+        color: orange;
+        text-shadow: 1px 1px black;
+    }
+</style>
+
+<body>
+    <h1>Dragon Ball Z Word Search Game</h1>
+    <div id="container">
+        <div id="hint"></div>
+
+        <div id="letters"></div>
+    </div>
+</body>
+
+<script type="text/javascript">
+    let words = ["DRAGON", "GOKU", "KAIOKEN", "SAIYAN", "KAME", "WISH", "KRILLIN", "BULMA"];
+    let tempWords = [];
+    let selectedWord = "";
+    const startRules = `
+        RULES
+        1. Words can be displayed horizontally, vertically, or diagonally.
+        2. To select the letters, press CMD (Mac) or CTRL (Windows) key and click the letters in the correct order.
+        3. Release CMD/CTRL at the end of each word.
+    `;
+
+    $(document).ready(function() {
+        alert(startRules);
+
+        arrangeGame();
+
+        $(".individual").click(function() {
+            $(this).addClass("clicked");
+            selectedWord += $(this).html();
+        });
+
+        $(document).keyup(function(e) {
+            if (e.keyCode == 17 || e.keyCode == 55) {
+                if(words.indexOf(selectedWord) >= 0) {
+                    $("#hint p").each(function(key, item) {
+                        if (selectedWord == $(item).html()) {
+                            $(this).addClass("done");
+                            $(".clicked").addClass("correct");
+                        }
+
+                        if ($(".done").length == words.length) {
+                            $("#hint").empty();
+                            $("#hint").append("<p id='message'>Congratulations! You have won the battle and Earth is safe once again!</p>");
+                        }
+                    })
+                }
+                selectedWord = "";
+                $(".individual").removeClass("clicked");
+            }
+        })
+    })
+
+    function arrangeGame() {
+        $("#hint").show();
+        $.each(words, function(key, item) {
+            $("#hint").append(`<p>${item}</p>`);
+        })
+
+        for (let i=1; i <= 12; i++) {
+            for (let j=1; j <= 12; j++) {
+                $("#letters").append(`<div class="individual" data-row="${i}" data-column="${j}"></div>`)
+            }
+        }
+
+        placeWords(words);
+        placeWords(tempWords);
+
+        $.each($(".individual"), function(key, item) {
+            if ($(item).attr("data-word") == undefined) {
+                $(this).html(randomLetter());
+            }
+        })
+    }
+
+    function placeWords(array) {
+        let positions = ["row", "column", "diagonal"];
+        let nextLetter = 0;
+        let newStart = 0;
+        
+        for (let i=0; i<array.length; i++) {
+            let orientation = positions[Math.floor(Math.random() * positions.length)];
+            let start = Math.floor(Math.random() * $(".individual").length);
+            let row = $(`.individual:eq("${start}")`).data("row");
+            let column = $(`.individual:eq("${start}")`).data("column");
+            
+            if (orientation == "row") {
+                nextLetter = 1;
+
+                if ((column * 1) + array[i].length <= 12) {
+                    newStart = start;
+                } else {
+                    let newColumn = 12 - array[i].length;
+
+                    newStart = $(`.individual[data-row="${row}"][data-column="${newColumn}"]`).index();
+                }
+            } else if (orientation == "column") {
+                nextLetter = 12;
+
+                if ((row * 1) + array[i].length <= 12) {
+                    newStart = start;
+                } else {
+                    let newRow = 12 - array[i].length;
+
+                    newStart = $(`.individual[data-row="${newRow}"][data-column="${column}"]`).index();
+                }
+            } else if (orientation == "diagonal") {
+                nextLetter = 13;
+
+                if ((column * 1) + array[i].length <= 12 && (row * 1) + array[i].length <= 12) {
+                    newStart = start;
+                }
+
+                if ((column * 1) + array[i].length > 12) {
+                    let newColumn = 12 - array[i].length;
+
+                    newStart = $(`.individual[data-row="${row}"][data-column="${newColumn}"]`).index();
+                }
+
+                if ((row * 1) + array[i].length > 12) {
+                    let newRow = 12 - array[i].length;
+
+                    newStart = $(`.individual[data-row="${newRow}"][data-column="${column}"]`).index();
+                }
+
+                if ((column * 1) + array[i].length > 12 && (row * 1) + array[i].length > 12) {
+                    let newColumn = 12 - array[i].length;
+                    let newRow = 12 - array[i].length;
+
+                    newStart = $(`.individual[data-row="${newRow}"][data-column="${newColumn}"]`).index();
+                }
+            }
+
+            let characters = array[i].split("");
+            let nextPosition = 0;
+            let occupied = checkOccupied(array[i], newStart, orientation);
+
+            if (occupied == "empty") {
+                $.each(characters, function(key, item) {
+                    $(`.individual:eq("${newStart + nextPosition}")`).html(item);
+                    $(`.individual:eq("${newStart + nextPosition}")`).attr("data-word", array[i]);
+                    nextPosition += nextLetter;
+                })
+            } else {
+                tempWords.push(array[i]);
+            }
+        }
+
+    }
+
+    function checkOccupied(word, startingPosition, orientation) {
+        let status = "";
+        let increment = 0;
+
+        if (orientation == "row") {
+            increment = 1;
+        } else if (orientation == "column") {
+            increment = 12;
+        } else if (orientation == "diagonal") {
+            increment = 13;
+        }
+
+        for (let i=startingPosition, j=0; j<word.length; j++) {
+            if ($(`.individual:eq("${i}")`).attr("data-word") == undefined) {
+                status = "empty";
+            } else {
+                status = "occupied";
+                break;
+            }
+
+            i += increment;
+        }
+
+        return status;
+    }
+
+    function randomLetter() {
+        let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        return alphabet.charAt(Math.floor(Math.random() * 26));
+    }
+</script>
+</html>

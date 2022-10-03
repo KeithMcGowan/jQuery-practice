@@ -76,3 +76,7 @@ NOTE: The `/ajax` folder is purely code.  It does not connect to an acutal serve
 - To-Do List
 
 <img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/to-do-list.gif" alt="To-do list project" width=350 />
+
+- Word Search Game
+
+<img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/word-search-game.gif" alt="Word search game project" width=350 />
