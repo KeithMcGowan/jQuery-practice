@@ -80,3 +80,7 @@ NOTE: The `/ajax` folder is purely code.  It does not connect to an acutal serve
 - Word Search Game
 
 <img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/word-search-game.gif" alt="Word search game project" width=350 />
+
+- Click Speed Test
+
+<img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/click-speed-test.gif" alt="Click speed test project" width=350 />
