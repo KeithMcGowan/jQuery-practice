@@ -84,3 +84,7 @@ NOTE: The `/ajax` folder is purely code.  It does not connect to an acutal serve
 - Click Speed Test
 
 <img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/click-speed-test.gif" alt="Click speed test project" width=350 />
+
+- Online Stopwatch
+
+<img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/stopwatch.gif" alt="Stopwatch project" width=350 />

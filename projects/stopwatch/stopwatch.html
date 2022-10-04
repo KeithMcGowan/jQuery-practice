@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <title>Stopwatch</title>
+</head>
+
+<style>
+    #container {
+        width: 300px;
+        height: 300px;
+        margin: 50px auto;
+    }
+
+    #timer {
+        margin-bottom: 15px;
+    }
+
+    span {
+        font-size: 30px;
+    }
+
+    sub {
+        font-weight: bold;
+    }
+
+    button {
+        width: 100px;
+        height: 40px;
+        font-size: 25px;
+        border-radius: 5px;
+        border: 1px solid black;
+        margin: 5px;
+        cursor: pointer;
+        outline: none;
+    }
+
+    button:active {
+        background-color: darkgrey;
+    }
+</style>
+
+<body>
+    <div id="container">
+        <div id="timer">
+            <span id="hour">00</span><span><sub>h</sub></span>
+            <span id="minute">00</span><span><sub>m</sub></span>
+            <span id="second">00</span><span><sub>s</sub></span>
+            <span id="millisecond">000</span><span><sub>ms</sub></span>
+        </div>
+
+        <button id="btnStart">Start</button>
+        <button id="btnReset">Restart</button>
+    </div>
+</body>
+
+<script type="text/javascript">
+    let interval;
+    let timeGap;
+    let clicked = 0;
+
+    $(document).ready(function() {
+        $("#btnStart").click(function() {
+            if ($(this).html() == "Start") {
+                $(this).html("Stop");
+
+                if (clicked == 0) {
+                    updateTime(0);
+                } else {
+                    updateTime(timeGap);
+                }
+
+                clicked++;
+            } else if ($(this).html() == "Stop") {
+                clearInterval(interval);
+                $(this).html("Start");
+            }
+        })
+
+        $("#btnReset").click(function() {
+            clicked = 0;
+
+            if (interval) clearInterval(interval);
+
+            displayTime(0, 0, 0, 0);
+            $("#btnStart").html("Start");
+        })
+    })
+
+    function updateTime(elapsedTime) {
+        let startTime = Date.now();
+
+        interval = setInterval(() => {
+            timeGap = Date.now() - startTime + elapsedTime;
+
+            let milliseconds = parseInt(timeGap);
+            let seconds = parseInt(milliseconds / 1000);
+            let minutes = parseInt(seconds / 60);
+            let hours = parseInt(minutes / 60);
+            
+            if (milliseconds >= 1000) milliseconds %= 1000;
+            if (seconds >= 60) seconds %= 60;
+            if (minutes >= 60) minutes %= 60;
+
+            displayTime(milliseconds, seconds, minutes, hours);
+        }, 100)
+    }
+
+    function displayTime(ms, s, m, h) {
+        $("#hour").html(addZeroes(h, 2));
+        $("#minute").html(addZeroes(m, 2));
+        $("#second").html(addZeroes(s, 2));
+        $("#millisecond").html(addZeroes(ms, 3));
+    }
+
+    function addZeroes(time, zeroes) {
+        let numberString = new String(time);
+
+        return new Array(zeroes - numberString.length + 1).join("0") + numberString;
+    }
+</script>
+</html>
