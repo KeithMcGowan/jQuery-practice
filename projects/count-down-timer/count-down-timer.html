@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <title>Count Down Timer with Alarm</title>
+</head>
+
+<style>
+    #container {
+        width: 300px;
+        height: 300px;
+        margin: 50px auto;
+    }
+
+    p,
+    span,
+    input {
+        font-family: sans-serif;
+        font-size: 30px;
+    }
+
+    p {
+        margin-bottom: 0;
+    }
+
+    input {
+        border: none;
+        outline: none;
+        cursor: pointer;
+    }
+
+    #timer {
+        margin: 10px;
+    }
+
+    #hours,
+    #seconds {
+        width: 35px;
+    }
+
+    #minutes {
+        width: 50px;
+    }
+
+    button {
+        width: 90px;
+        height: 40px;
+        font-size: 25px;
+        cursor: pointer;
+        border: 1px solid black;
+        border-radius: 5px;
+    }
+</style>
+
+<body>
+    <audio id="sound">
+        <source src="clock-sound-effect.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="container">
+        <p>Set End Time</p>
+        <div id="timer">
+            <input type="text" id="hours" placeholder="hh" maxlength="2">
+            <span> : </span>
+            <input type="text" id="minutes" placeholder="mm" maxlength="2">
+            <span> : </span>
+            <input type="text" id="seconds" placeholder="ss" maxlength="2">
+        </div>
+        <button id="btnStart">Start</button>
+        <button id="btnReset">Reset</button>
+    </div>
+</body>
+
+<script type="text/javascript">
+    let interval;
+    let timeGap;
+    let hours;
+    let minutes;
+    let seconds;
+
+    $(document).ready(function() {
+        $("input").keypress(function(e) {
+            let keyPressed = (e.which) ? e.which : e.keyCode;
+
+            e = (e) ? e : window.event;
+
+            if (keyPressed > 31 && (keyPressed < 48 || keyPressed > 57)) {
+                return false;
+            } else {
+                return true;
+            }
+        })
+
+        $("#btnStart").click(function() {
+            if ($(this).html() == "Start") {
+                if ($("#hours").val() == "" && $("#minutes").val() == "" && $("#seconds").val() == "") {
+                    alert("Enter some value!");
+                } else {
+                    $(this).html("Stop");
+                    $("input").prop("disabled", true);
+                    updateTime();
+                }
+            } else if ($(this).html() == "Stop") {
+                if (timeGap <= 0) {
+                    $("#sound")[0].pause();
+                    $("input").prop("disabled", false);
+                    displayPlaceholder();
+                }
+                clearInterval(interval);
+                $(this).html("Start");
+            }
+        })
+
+        $("#btnReset").click(function() {
+            if (interval) clearInterval(interval);
+            $("#sound")[0].pause();
+            displayPlaceholder();
+            $("input").prop("disabled", false);
+            $("#btnStart").html("Start");
+        })
+    })
+
+    function updateTime() {
+        let startTime = new Date();
+        
+        startTime.setHours(startTime.getHours() + +($("#hours").val()));
+        startTime.setMinutes(startTime.getMinutes() + +($("#minutes").val()));
+        startTime.setSeconds(startTime.getSeconds() + +($("#seconds").val()));
+
+        let endTime = startTime.valueOf();
+        
+        interval = setInterval(() => {
+            timeGap = endTime - Date.now();
+
+            if (timeGap <= 0) {
+                $("#sound")[0].play();
+                $("#sound").prop("loop", true);
+            } else {
+                seconds = parseInt(timeGap / 1000);
+                minutes = parseInt(seconds / 60);
+                hours = parseInt(minutes / 60);
+    
+                if (minutes >= 60) minutes %= 60;
+                if (seconds >= 60) seconds %= 60;
+    
+                displayTime(hours, "#hours");
+                displayTime(minutes, "#minutes");
+                displayTime(seconds, "#seconds");
+            }
+        }, 100);
+    }
+
+    function displayTime(time, id) {
+        if (time < 10) {
+            $(id).val("0" + time);
+        } else {
+            $(id).val(time);
+        }
+    }
+
+    function displayPlaceholder() {
+        $("#hours").val("").attr("placeholder", "hh");
+        $("#minutes").val("").attr("placeholder", "mm");
+        $("#seconds").val("").attr("placeholder", "ss");
+    }
+</script>
+</html>

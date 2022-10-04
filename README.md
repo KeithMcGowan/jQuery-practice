@@ -1,11 +1,11 @@
 # jQuery Practice
 Playground for jQuery practice and projects.
 
-This practice code is from a Udemy course called [jQuery in Action: Build 20 jQuery Projects](https://www.udemy.com/course/jquery-web-development-made-easy/)
+This practice code is from the Udemy course [jQuery in Action: Build 20 jQuery Projects](https://www.udemy.com/course/jquery-web-development-made-easy/)
 
-After forking, make sure to run `npm install jQuery` before you begin.
+After forking, make sure to run `npm install` before you begin to update the jQuery dependencies.
 
-When creating a new HTML page, make sure to import jQuery in the Head of the document.  An example would look like:
+When creating a new HTML page, remember to import jQuery in the Head of the document.  An example would look like:
 
 `<script src="../node_modules/jquery/dist/jquery.min.js"></script>`
 
@@ -88,3 +88,7 @@ NOTE: The `/ajax` folder is purely code.  It does not connect to an acutal serve
 - Online Stopwatch
 
 <img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/stopwatch.gif" alt="Stopwatch project" width=350 />
+
+- Countdown Timer (with audio alarm)
+
+<img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/count-down-timer.gif" alt="Countdown timer project" width=350 />
