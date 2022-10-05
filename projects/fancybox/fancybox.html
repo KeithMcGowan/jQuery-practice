@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../node_modules/jquery.fancybox/source/jquery.fancybox.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="../../node_modules/jquery.fancybox/source/jquery.fancybox.pack.js"></script> 
+
+    <title>FancyBox Tool</title>
+</head>
+
+<style>
+    #thumbs {
+        width: 850px;
+        height: 150px;
+        margin: 350px auto;
+    }
+
+    #thumbs img {
+        width: 150px;
+        height: 150px;
+        border: 2px solid grey;
+        margin: 5px;
+        object-fit: cover;
+    }
+
+    .fancybox-wrap,
+    .fancybox-skin,
+    .fancybox-outter,
+    .fancybox-inner,
+    .fancybox-image {
+        width: 700px !important;
+        height: 450px !important;
+    }
+</style>
+
+<body>
+   <div id="thumbs"></div> 
+</body>
+
+<script type="text/javascript">
+
+    const imageArr = [
+        "../../images/Krillin_and_Family.jpg",
+        "../../images/Dragon_Ball_Super.jpeg",
+        "../../images/Goku6.jpg",
+        "../../images/Frieza_Cell_Buu.png",
+        "../../images/Goku_vs_Cell.jpg"
+    ]
+
+    $(document).ready(function() {
+        $.each(imageArr, function(i, image) {
+            $("#thumbs").append(`<a class="fancy" rel="gallery" href="${image}"><img src="${image}" /></a>`);
+            $(".fancy").fancybox({
+                openEffect: 'elastic',
+                helpers: {
+                    overlay: {
+                        css: {
+                            'background' : 'rgba(0, 0, 128, .3)'
+                        }
+                    }
+                }
+            });
+        })
+    })
+</script>
+</html>

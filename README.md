@@ -92,3 +92,7 @@ NOTE: The `/ajax` folder is purely code.  It does not connect to an acutal serve
 - Countdown Timer (with audio alarm)
 
 <img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/count-down-timer.gif" alt="Countdown timer project" width=350 />
+
+- Fancybox Tool Gallery
+
+<img src="https://github.com/KeithMcGowan/jQuery-practice/blob/master/gifs/fancybox.gif" alt="Fancybox tool project" width=350 />
